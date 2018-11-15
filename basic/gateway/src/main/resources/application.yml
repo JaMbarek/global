@@ -1,0 +1,7 @@
+service:
+  name: yml
+outer:
+  yml:
+    name: outer-yml-name
+    outer:
+      proper: ${outer.property.name}

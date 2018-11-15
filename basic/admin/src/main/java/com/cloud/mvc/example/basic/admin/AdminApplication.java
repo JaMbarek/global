@@ -1,9 +1,10 @@
 package com.cloud.mvc.example.basic.admin;
 
-import com.cloud.mvc.example.basic.sharable.AbstractApplication;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public class AdminApplication extends AbstractApplication {
+@SpringBootApplication
+public class AdminApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AdminApplication.class, args);

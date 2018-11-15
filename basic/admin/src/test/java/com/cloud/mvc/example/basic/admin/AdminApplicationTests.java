@@ -9,11 +9,11 @@ import org.springframework.core.env.Environment;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = AdminApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = AdminApplication.class)
 public class AdminApplicationTests {
 
 
-    @Value("${admin.port.test}")
+    @Value("${admin.port}")
     private Integer port;
 
 
@@ -22,9 +22,6 @@ public class AdminApplicationTests {
 
     @Test
     public void contextLoads() {
-        String property = environment.getProperty("admin.port.test");
-        System.out.println(property);
-
 
         System.out.println(port);
     }
