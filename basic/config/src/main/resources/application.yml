@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: ${config.name}
+  cloud:
+    config:
+      server:
+        git:
+          username:
+          uri:
+          password:
+
+
+server:
+  port: ${config.port}
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: ${eureka.url}

@@ -13,9 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class AdminApplicationTests {
 
 
-    @Value("${admin.port}")
-    private Integer port;
+    private String serviceName;
 
+    @Value("${name}")
+    private String name;
 
     @Autowired
     Environment environment;
@@ -23,7 +24,12 @@ public class AdminApplicationTests {
     @Test
     public void contextLoads() {
 
-        System.out.println(port);
+        System.out.println(serviceName);
+    }
+
+    @Test
+    public void name(){
+        System.out.println(name);
     }
 
 }

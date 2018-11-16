@@ -1,0 +1,20 @@
+server:
+  port: ${eureka.port}
+spring:
+  application:
+    name: ${eureka.name}
+  security:
+    basic:
+      enabled: true
+    user:
+      name: ${eureka.username}
+      password: ${eureka.password}
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: ${eureka.url}
+    fetch-registry: false
+  instance:
+    non-secure-port-enabled: false
+    hostname: localhost
