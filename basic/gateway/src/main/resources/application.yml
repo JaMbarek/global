@@ -1,0 +1,14 @@
+
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: ${eureka.url}
+server:
+  port: ${gateway.port}
+spring:
+  application:
+    name: ${gateway.name}

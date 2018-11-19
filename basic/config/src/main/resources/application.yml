@@ -1,21 +1,21 @@
 spring:
   application:
-    name: ${config.name}
+    name: ConfigServer
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          username:
-          uri:
-          password:
-
+        native:
+          search-locations: classpath:/local
 
 server:
-  port: ${config.port}
+  port: 10003
+  address: localhost
 
 eureka:
   instance:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: ${eureka.url}
+      defaultZone: http://admin:admin123@localhost:10000/eureka/

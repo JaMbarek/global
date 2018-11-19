@@ -1,0 +1,25 @@
+server:
+  port: 10004
+  address: localhost
+spring:
+  application:
+    name: ZipkinServer
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      probability: 1.0
+  zipkin:
+#    base-url: http:/${server.address}:${server.port}/zipkin
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://admin:admin123@localhost:10000/eureka/
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
