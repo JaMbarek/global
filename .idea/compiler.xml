@@ -7,10 +7,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="AdminServer" />
+        <module name="authclient" />
         <module name="config (1) (com.cloud.mvc.example.basic)" />
         <module name="eureka" />
         <module name="gateway" />
+        <module name="general" />
+        <module name="generator" />
+        <module name="messageclient" />
         <module name="monitor" />
+        <module name="system" />
+        <module name="task" />
+        <module name="transaction" />
+        <module name="user" />
         <module name="ZipkinServer" />
       </profile>
     </annotationProcessing>

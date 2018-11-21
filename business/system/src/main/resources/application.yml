@@ -1,0 +1,23 @@
+server:
+  port: 9000
+
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 192.168.1.146
+  client:
+    service-url:
+      defaultZone: http://admin:admin123@localhost:10000/eureka/
+    fetch-registry: true
+    registry-fetch-interval-seconds: 20
+
+
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://192.168.204.10:3306/system?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
+    password: root
+  application:
+    name: user

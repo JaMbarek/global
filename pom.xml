@@ -12,6 +12,8 @@
         <module>basic</module>
         <module>common</module>
         <module>business</module>
+        <module>task</module>
+        <module>generator</module>
     </modules>
 
 
