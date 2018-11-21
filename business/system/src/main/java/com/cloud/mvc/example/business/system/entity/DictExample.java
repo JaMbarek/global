@@ -1,4 +1,4 @@
-package com.cloud.mvc.example.business.domain.entity.system;
+package com.cloud.mvc.example.business.system.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -178,11 +178,17 @@ public class DictExample {
 
         public Criteria andIdIn(List<Long> values) {
             addCriterion("id in", values, "id");
+            if (values.size() > 2000){
+                  throw new RuntimeException("values size to long ,please change batch method");
+            }
             return (Criteria) this;
         }
 
         public Criteria andIdNotIn(List<Long> values) {
             addCriterion("id not in", values, "id");
+            if (values.size() > 2000){
+                  throw new RuntimeException("values size to long ,please change batch method");
+            }
             return (Criteria) this;
         }
 
@@ -583,6 +589,54 @@ public class DictExample {
 
         public Criteria andStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("status not between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupLikeBoth(String value) {
+            if(value != null){
+                value = "%" + value + "%";
+            }
+            addCriterion("group like", value, "group");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupNotLikeBoth(String value) {
+            if(value != null){
+                value = "%" + value + "%";
+            }
+            addCriterion("group not like", value, "group");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyLikeBoth(String value) {
+            if(value != null){
+                value = "%" + value + "%";
+            }
+            addCriterion("key like", value, "key");
+            return (Criteria) this;
+        }
+
+        public Criteria andKeyNotLikeBoth(String value) {
+            if(value != null){
+                value = "%" + value + "%";
+            }
+            addCriterion("key not like", value, "key");
+            return (Criteria) this;
+        }
+
+        public Criteria andValueLikeBoth(String value) {
+            if(value != null){
+                value = "%" + value + "%";
+            }
+            addCriterion("value like", value, "value");
+            return (Criteria) this;
+        }
+
+        public Criteria andValueNotLikeBoth(String value) {
+            if(value != null){
+                value = "%" + value + "%";
+            }
+            addCriterion("value not like", value, "value");
             return (Criteria) this;
         }
     }

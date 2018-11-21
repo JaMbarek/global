@@ -1,5 +1,6 @@
-package com.cloud.mvc.example.business.domain.entity.system;
+package com.cloud.mvc.example.business.system.entity;
 
+import com.cloud.mvc.example.general.supers.BaseEntity;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Dict {
+public class Dict extends BaseEntity {
     private Long id;
 
     private String group;

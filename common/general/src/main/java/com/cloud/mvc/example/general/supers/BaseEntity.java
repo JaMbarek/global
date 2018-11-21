@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 public class BaseEntity {
     private LocalDateTime createDate;
     private LocalDateTime modifyDate;
-    private Integer createUserId;
-    private Integer modifyUserId;
+    private Long createUserId;
+    private Long modifyUserId;
     private Integer status;
     private Integer version;
 }

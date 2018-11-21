@@ -19,6 +19,18 @@ public class MapperPlugin extends PluginAdapter {
         return true;
     }
 
+
+    @Override
+    public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        String baseInterfaceName = getProperties().getProperty("baseEntityName");
+        FullyQualifiedJavaType fqjt = new FullyQualifiedJavaType(baseInterfaceName);
+        FullyQualifiedJavaType imp = new FullyQualifiedJavaType(
+                baseInterfaceName);
+        topLevelClass.setSuperClass(fqjt);
+        topLevelClass.addImportedType(imp);
+        return true;
+    }
+
     /**
      * 生成dao
      */

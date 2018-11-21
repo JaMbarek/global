@@ -7,7 +7,7 @@ import java.util.List;
 /**
 * Created by Mybatis Generator on 2018/11/21
 */
-public interface BaseMapper<A, B> {
+public interface BaseMapper<A extends BaseEntity, B> {
     long countByExample(B example);
 
     int deleteByExample(B example);

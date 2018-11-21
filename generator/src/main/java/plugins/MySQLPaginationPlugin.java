@@ -7,7 +7,12 @@ import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+/**
+ * 生成分页
+ * 加入in的数量控制
+ */
 public class MySQLPaginationPlugin extends PluginAdapter {
 
     private static final String start = "start";
@@ -96,16 +101,44 @@ public class MySQLPaginationPlugin extends PluginAdapter {
         commentGenerator.addGeneralMethodComment(method, introspectedTable);
         topLevelClass.addMethod(method);
 
-
-
         topLevelClass.getMethods()
                 .stream()
                 .filter(t -> t.getName().equals("clear"))
                 .forEach(t -> {
-                    t.addBodyLine(3, "this."+start+" = -1;");
-                    t.addBodyLine(4, "this."+limit+" = -1;");
+                    t.addBodyLine(3, "this." + start + " = -1;");
+                    t.addBodyLine(4, "this." + limit + " = -1;");
                 });
-
+        //限制in的查询个数
+        topLevelClass.getInnerClasses().stream()
+                .filter(t -> t.getType().getShortName().equals("GeneratedCriteria"))
+                .findFirst()
+                .ifPresent(t -> {
+                    t.getMethods().stream()
+                            .filter(a -> a.getName().toLowerCase().contains("and") && a.getName().toLowerCase().contains("id") && a.getName().toLowerCase().contains("in"))
+                            .forEach(a -> {
+                                String parameterName = a.getParameters().get(0).getName();
+                                a.addBodyLine(1, "if (" + parameterName + ".size() > 2000){");
+                                a.addBodyLine(2, "  throw new RuntimeException(\"" + parameterName + " size to long ,please change batch method\");");
+                                a.addBodyLine(3, "}");
+                            });
+                });
+        //添加likeboth方法
+        topLevelClass.getInnerClasses().stream()
+                .filter(t -> t.getType().getShortName().equals("GeneratedCriteria"))
+                .findFirst()
+                .ifPresent(t -> {
+                    List<Method> likeMethods = t.getMethods().stream().filter(a -> a.getName().toLowerCase().contains("like") && a.getName().toLowerCase().contains("and"))
+                            .collect(Collectors.toList());
+                    likeMethods.stream().map(a -> {
+                        Method method1 = new Method(a);
+                        method1.setName(method1.getName() + "Both");
+                        String name = method1.getParameters().get(0).getName();
+                        method1.addBodyLine(0, "if(" + name + " != null){");
+                        method1.addBodyLine(1, name + " = \"%\" + " + name + " + \"%\";");
+                        method1.addBodyLine(2, "}");
+                        return method1;
+                    }).forEach(a -> t.addMethod(a));
+                });
 
     }
 

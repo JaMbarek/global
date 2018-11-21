@@ -1,6 +1,7 @@
 package com.cloud.mvc.example.general.supers;
 
 import com.cloud.mvc.example.business.domain.enums.DeleteOperatrs;
+import com.cloud.mvc.example.general.session.SessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
@@ -29,12 +30,14 @@ public abstract class AbstractBaseService<A extends BaseEntity, B> implements Ba
     @Override
     public int insert(A record) {
         record.setCreateDate(LocalDateTime.now());
+        record.setCreateUserId(SessionUtils.getCurrentUserId());
         return mapper.insert(record);
     }
 
     @Override
     public int insertSelective(A record) {
         record.setCreateDate(LocalDateTime.now());
+        record.setCreateUserId(SessionUtils.getCurrentUserId());
         return mapper.insertSelective(record);
     }
 
@@ -51,24 +54,28 @@ public abstract class AbstractBaseService<A extends BaseEntity, B> implements Ba
     @Override
     public int updateByExampleSelective(A record, B example) {
         record.setModifyDate(LocalDateTime.now());
+        record.setModifyUserId(SessionUtils.getCurrentUserId());
         return mapper.updateByExampleSelective(record, example);
     }
 
     @Override
     public int updateByExample(A record, B example) {
         record.setModifyDate(LocalDateTime.now());
+        record.setModifyUserId(SessionUtils.getCurrentUserId());
         return mapper.updateByExample(record, example);
     }
 
     @Override
     public int updateByPrimaryKeySelective(A record) {
         record.setModifyDate(LocalDateTime.now());
+        record.setModifyUserId(SessionUtils.getCurrentUserId());
         return mapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
     public int updateByPrimaryKey(A record) {
         record.setModifyDate(LocalDateTime.now());
+        record.setModifyUserId(SessionUtils.getCurrentUserId());
         return mapper.updateByPrimaryKey(record);
     }
 }
