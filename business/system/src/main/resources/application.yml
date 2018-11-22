@@ -1,8 +1,6 @@
 server:
   port: 9000
 
-
-
 eureka:
   instance:
     prefer-ip-address: true
@@ -15,9 +13,13 @@ eureka:
 
 
 spring:
+  profiles:
+    active: dev
   datasource:
     username: root
     url: jdbc:mysql://192.168.204.10:3306/system?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
     password: root
   application:
     name: user
+logging:
+  config: classpath:logback.groovy

@@ -11,8 +11,6 @@ import javax.sql.DataSource;
 /**
  * 扫描mybatis的接口
  *
- * @author zh
- *
  */
 @Configuration
 public class MyBatisMapperScannerConfig  {

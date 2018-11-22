@@ -203,212 +203,212 @@ public class DictExample {
         }
 
         public Criteria andGroupIsNull() {
-            addCriterion("group is null");
+            addCriterion("`group` is null");
             return (Criteria) this;
         }
 
         public Criteria andGroupIsNotNull() {
-            addCriterion("group is not null");
+            addCriterion("`group` is not null");
             return (Criteria) this;
         }
 
         public Criteria andGroupEqualTo(String value) {
-            addCriterion("group =", value, "group");
+            addCriterion("`group` =", value, "group");
             return (Criteria) this;
         }
 
         public Criteria andGroupNotEqualTo(String value) {
-            addCriterion("group <>", value, "group");
+            addCriterion("`group` <>", value, "group");
             return (Criteria) this;
         }
 
         public Criteria andGroupGreaterThan(String value) {
-            addCriterion("group >", value, "group");
+            addCriterion("`group` >", value, "group");
             return (Criteria) this;
         }
 
         public Criteria andGroupGreaterThanOrEqualTo(String value) {
-            addCriterion("group >=", value, "group");
+            addCriterion("`group` >=", value, "group");
             return (Criteria) this;
         }
 
         public Criteria andGroupLessThan(String value) {
-            addCriterion("group <", value, "group");
+            addCriterion("`group` <", value, "group");
             return (Criteria) this;
         }
 
         public Criteria andGroupLessThanOrEqualTo(String value) {
-            addCriterion("group <=", value, "group");
+            addCriterion("`group` <=", value, "group");
             return (Criteria) this;
         }
 
         public Criteria andGroupLike(String value) {
-            addCriterion("group like", value, "group");
+            addCriterion("`group` like", value, "group");
             return (Criteria) this;
         }
 
         public Criteria andGroupNotLike(String value) {
-            addCriterion("group not like", value, "group");
+            addCriterion("`group` not like", value, "group");
             return (Criteria) this;
         }
 
         public Criteria andGroupIn(List<String> values) {
-            addCriterion("group in", values, "group");
+            addCriterion("`group` in", values, "group");
             return (Criteria) this;
         }
 
         public Criteria andGroupNotIn(List<String> values) {
-            addCriterion("group not in", values, "group");
+            addCriterion("`group` not in", values, "group");
             return (Criteria) this;
         }
 
         public Criteria andGroupBetween(String value1, String value2) {
-            addCriterion("group between", value1, value2, "group");
+            addCriterion("`group` between", value1, value2, "group");
             return (Criteria) this;
         }
 
         public Criteria andGroupNotBetween(String value1, String value2) {
-            addCriterion("group not between", value1, value2, "group");
+            addCriterion("`group` not between", value1, value2, "group");
             return (Criteria) this;
         }
 
         public Criteria andKeyIsNull() {
-            addCriterion("key is null");
+            addCriterion("`key` is null");
             return (Criteria) this;
         }
 
         public Criteria andKeyIsNotNull() {
-            addCriterion("key is not null");
+            addCriterion("`key` is not null");
             return (Criteria) this;
         }
 
         public Criteria andKeyEqualTo(String value) {
-            addCriterion("key =", value, "key");
+            addCriterion("`key` =", value, "key");
             return (Criteria) this;
         }
 
         public Criteria andKeyNotEqualTo(String value) {
-            addCriterion("key <>", value, "key");
+            addCriterion("`key` <>", value, "key");
             return (Criteria) this;
         }
 
         public Criteria andKeyGreaterThan(String value) {
-            addCriterion("key >", value, "key");
+            addCriterion("`key` >", value, "key");
             return (Criteria) this;
         }
 
         public Criteria andKeyGreaterThanOrEqualTo(String value) {
-            addCriterion("key >=", value, "key");
+            addCriterion("`key` >=", value, "key");
             return (Criteria) this;
         }
 
         public Criteria andKeyLessThan(String value) {
-            addCriterion("key <", value, "key");
+            addCriterion("`key` <", value, "key");
             return (Criteria) this;
         }
 
         public Criteria andKeyLessThanOrEqualTo(String value) {
-            addCriterion("key <=", value, "key");
+            addCriterion("`key` <=", value, "key");
             return (Criteria) this;
         }
 
         public Criteria andKeyLike(String value) {
-            addCriterion("key like", value, "key");
+            addCriterion("`key` like", value, "key");
             return (Criteria) this;
         }
 
         public Criteria andKeyNotLike(String value) {
-            addCriterion("key not like", value, "key");
+            addCriterion("`key` not like", value, "key");
             return (Criteria) this;
         }
 
         public Criteria andKeyIn(List<String> values) {
-            addCriterion("key in", values, "key");
+            addCriterion("`key` in", values, "key");
             return (Criteria) this;
         }
 
         public Criteria andKeyNotIn(List<String> values) {
-            addCriterion("key not in", values, "key");
+            addCriterion("`key` not in", values, "key");
             return (Criteria) this;
         }
 
         public Criteria andKeyBetween(String value1, String value2) {
-            addCriterion("key between", value1, value2, "key");
+            addCriterion("`key` between", value1, value2, "key");
             return (Criteria) this;
         }
 
         public Criteria andKeyNotBetween(String value1, String value2) {
-            addCriterion("key not between", value1, value2, "key");
+            addCriterion("`key` not between", value1, value2, "key");
             return (Criteria) this;
         }
 
         public Criteria andValueIsNull() {
-            addCriterion("value is null");
+            addCriterion("`value` is null");
             return (Criteria) this;
         }
 
         public Criteria andValueIsNotNull() {
-            addCriterion("value is not null");
+            addCriterion("`value` is not null");
             return (Criteria) this;
         }
 
         public Criteria andValueEqualTo(String value) {
-            addCriterion("value =", value, "value");
+            addCriterion("`value` =", value, "value");
             return (Criteria) this;
         }
 
         public Criteria andValueNotEqualTo(String value) {
-            addCriterion("value <>", value, "value");
+            addCriterion("`value` <>", value, "value");
             return (Criteria) this;
         }
 
         public Criteria andValueGreaterThan(String value) {
-            addCriterion("value >", value, "value");
+            addCriterion("`value` >", value, "value");
             return (Criteria) this;
         }
 
         public Criteria andValueGreaterThanOrEqualTo(String value) {
-            addCriterion("value >=", value, "value");
+            addCriterion("`value` >=", value, "value");
             return (Criteria) this;
         }
 
         public Criteria andValueLessThan(String value) {
-            addCriterion("value <", value, "value");
+            addCriterion("`value` <", value, "value");
             return (Criteria) this;
         }
 
         public Criteria andValueLessThanOrEqualTo(String value) {
-            addCriterion("value <=", value, "value");
+            addCriterion("`value` <=", value, "value");
             return (Criteria) this;
         }
 
         public Criteria andValueLike(String value) {
-            addCriterion("value like", value, "value");
+            addCriterion("`value` like", value, "value");
             return (Criteria) this;
         }
 
         public Criteria andValueNotLike(String value) {
-            addCriterion("value not like", value, "value");
+            addCriterion("`value` not like", value, "value");
             return (Criteria) this;
         }
 
         public Criteria andValueIn(List<String> values) {
-            addCriterion("value in", values, "value");
+            addCriterion("`value` in", values, "value");
             return (Criteria) this;
         }
 
         public Criteria andValueNotIn(List<String> values) {
-            addCriterion("value not in", values, "value");
+            addCriterion("`value` not in", values, "value");
             return (Criteria) this;
         }
 
         public Criteria andValueBetween(String value1, String value2) {
-            addCriterion("value between", value1, value2, "value");
+            addCriterion("`value` between", value1, value2, "value");
             return (Criteria) this;
         }
 
         public Criteria andValueNotBetween(String value1, String value2) {
-            addCriterion("value not between", value1, value2, "value");
+            addCriterion("`value` not between", value1, value2, "value");
             return (Criteria) this;
         }
 
@@ -533,62 +533,62 @@ public class DictExample {
         }
 
         public Criteria andStatusIsNull() {
-            addCriterion("status is null");
+            addCriterion("`status` is null");
             return (Criteria) this;
         }
 
         public Criteria andStatusIsNotNull() {
-            addCriterion("status is not null");
+            addCriterion("`status` is not null");
             return (Criteria) this;
         }
 
         public Criteria andStatusEqualTo(Integer value) {
-            addCriterion("status =", value, "status");
+            addCriterion("`status` =", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusNotEqualTo(Integer value) {
-            addCriterion("status <>", value, "status");
+            addCriterion("`status` <>", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusGreaterThan(Integer value) {
-            addCriterion("status >", value, "status");
+            addCriterion("`status` >", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("status >=", value, "status");
+            addCriterion("`status` >=", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusLessThan(Integer value) {
-            addCriterion("status <", value, "status");
+            addCriterion("`status` <", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusLessThanOrEqualTo(Integer value) {
-            addCriterion("status <=", value, "status");
+            addCriterion("`status` <=", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusIn(List<Integer> values) {
-            addCriterion("status in", values, "status");
+            addCriterion("`status` in", values, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusNotIn(List<Integer> values) {
-            addCriterion("status not in", values, "status");
+            addCriterion("`status` not in", values, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusBetween(Integer value1, Integer value2) {
-            addCriterion("status between", value1, value2, "status");
+            addCriterion("`status` between", value1, value2, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("status not between", value1, value2, "status");
+            addCriterion("`status` not between", value1, value2, "status");
             return (Criteria) this;
         }
 
@@ -596,7 +596,7 @@ public class DictExample {
             if(value != null){
                 value = "%" + value + "%";
             }
-            addCriterion("group like", value, "group");
+            addCriterion("`group` like", value, "group");
             return (Criteria) this;
         }
 
@@ -604,7 +604,7 @@ public class DictExample {
             if(value != null){
                 value = "%" + value + "%";
             }
-            addCriterion("group not like", value, "group");
+            addCriterion("`group` not like", value, "group");
             return (Criteria) this;
         }
 
@@ -612,7 +612,7 @@ public class DictExample {
             if(value != null){
                 value = "%" + value + "%";
             }
-            addCriterion("key like", value, "key");
+            addCriterion("`key` like", value, "key");
             return (Criteria) this;
         }
 
@@ -620,7 +620,7 @@ public class DictExample {
             if(value != null){
                 value = "%" + value + "%";
             }
-            addCriterion("key not like", value, "key");
+            addCriterion("`key` not like", value, "key");
             return (Criteria) this;
         }
 
@@ -628,7 +628,7 @@ public class DictExample {
             if(value != null){
                 value = "%" + value + "%";
             }
-            addCriterion("value like", value, "value");
+            addCriterion("`value` like", value, "value");
             return (Criteria) this;
         }
 
@@ -636,7 +636,7 @@ public class DictExample {
             if(value != null){
                 value = "%" + value + "%";
             }
-            addCriterion("value not like", value, "value");
+            addCriterion("`value` not like", value, "value");
             return (Criteria) this;
         }
     }

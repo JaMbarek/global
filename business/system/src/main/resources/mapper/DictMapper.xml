@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, group, key, value, create_date, modify_date, status
+    id, `group`, `key`, `value`, create_date, modify_date, `status`
   </sql>
   <select id="selectByExample" parameterType="com.cloud.mvc.example.business.system.entity.DictExample" resultMap="BaseResultMap">
     select
@@ -108,8 +108,8 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into dict (group, key, value, 
-      create_date, modify_date, status
+    insert into dict (`group`, `key`, `value`, 
+      create_date, modify_date, `status`
       )
     values (#{group,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
@@ -122,13 +122,13 @@
     insert into dict
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="group != null">
-        group,
+        `group`,
       </if>
       <if test="key != null">
-        key,
+        `key`,
       </if>
       <if test="value != null">
-        value,
+        `value`,
       </if>
       <if test="createDate != null">
         create_date,
@@ -137,7 +137,7 @@
         modify_date,
       </if>
       <if test="status != null">
-        status,
+        `status`,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -174,13 +174,13 @@
         id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.group != null">
-        group = #{record.group,jdbcType=VARCHAR},
+        `group` = #{record.group,jdbcType=VARCHAR},
       </if>
       <if test="record.key != null">
-        key = #{record.key,jdbcType=VARCHAR},
+        `key` = #{record.key,jdbcType=VARCHAR},
       </if>
       <if test="record.value != null">
-        value = #{record.value,jdbcType=VARCHAR},
+        `value` = #{record.value,jdbcType=VARCHAR},
       </if>
       <if test="record.createDate != null">
         create_date = #{record.createDate,jdbcType=TIMESTAMP},
@@ -189,7 +189,7 @@
         modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
+        `status` = #{record.status,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -199,12 +199,12 @@
   <update id="updateByExample" parameterType="map">
     update dict
     set id = #{record.id,jdbcType=BIGINT},
-      group = #{record.group,jdbcType=VARCHAR},
-      key = #{record.key,jdbcType=VARCHAR},
-      value = #{record.value,jdbcType=VARCHAR},
+      `group` = #{record.group,jdbcType=VARCHAR},
+      `key` = #{record.key,jdbcType=VARCHAR},
+      `value` = #{record.value,jdbcType=VARCHAR},
       create_date = #{record.createDate,jdbcType=TIMESTAMP},
       modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
-      status = #{record.status,jdbcType=INTEGER}
+      `status` = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,13 +213,13 @@
     update dict
     <set>
       <if test="group != null">
-        group = #{group,jdbcType=VARCHAR},
+        `group` = #{group,jdbcType=VARCHAR},
       </if>
       <if test="key != null">
-        key = #{key,jdbcType=VARCHAR},
+        `key` = #{key,jdbcType=VARCHAR},
       </if>
       <if test="value != null">
-        value = #{value,jdbcType=VARCHAR},
+        `value` = #{value,jdbcType=VARCHAR},
       </if>
       <if test="createDate != null">
         create_date = #{createDate,jdbcType=TIMESTAMP},
@@ -228,19 +228,19 @@
         modify_date = #{modifyDate,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
+        `status` = #{status,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cloud.mvc.example.business.system.entity.Dict">
     update dict
-    set group = #{group,jdbcType=VARCHAR},
-      key = #{key,jdbcType=VARCHAR},
-      value = #{value,jdbcType=VARCHAR},
+    set `group` = #{group,jdbcType=VARCHAR},
+      `key` = #{key,jdbcType=VARCHAR},
+      `value` = #{value,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       modify_date = #{modifyDate,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=INTEGER}
+      `status` = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

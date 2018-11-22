@@ -7,7 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 /**
-* Created by Mybatis Generator on 2018/11/21
+* Created by Mybatis Generator on 2018/11/22
 */
 public interface DictMapper extends BaseMapper<Dict, DictExample> {
 }
