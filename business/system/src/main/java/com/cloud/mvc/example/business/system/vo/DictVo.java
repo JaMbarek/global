@@ -1,18 +1,16 @@
-package com.cloud.mvc.example.business.domain.dto.system;
-
+package com.cloud.mvc.example.business.system.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-@ApiModel
 @Data
-public class DictDto {
+@ApiModel
+public class DictVo {
 
-    @ApiModelProperty("键值，唯一校验")
+    @ApiModelProperty("key")
     private String key;
 
-    @ApiModelProperty("值")
+    @ApiModelProperty("value")
     private String value;
-
 }

@@ -1,6 +1,8 @@
 package com.cloud.mvc.example.general.supers;
 
 import com.cloud.mvc.example.business.domain.enums.DeleteOperatrs;
+import com.cloud.mvc.example.general.response.PageInfo;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -28,5 +30,6 @@ public interface BaseService<A extends BaseEntity, B> {
 
     int updateByPrimaryKey(A record);
 
+    Mono<PageInfo> paging(B countExample, B listExample);
 
 }

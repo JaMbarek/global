@@ -8,7 +8,7 @@ def appName = "system"
 
 appender("CONSOLE", ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
-        pattern = "%red(%date) [%thread] %highlight(%-5level) %boldMagenta(%logger{80}) - %cyan(%msg%n)"
+        pattern = "%date [%thread] %highlight(%-5level) %logger{80} - %cyan(%msg%n)"
         charset = Charset.forName("utf8")
     }
 }
@@ -35,14 +35,23 @@ logger("org.springframework.core", ERROR)
 logger("org.springframework.beans", ERROR)
 logger("org.springframework.boot.autoconfigure", ERROR)
 logger("org.apache.http", ERROR)
-logger("com.netflix.discovery", ERROR)
+logger("com.netflix", ERROR)
+logger("org.netflix", ERROR)
 logger("org.springframework.jmx", ERROR)
 logger("org.hibernate.validator", ERROR)
 logger("io.netty", ERROR)
 logger("org.synchronoss.cloud", ERROR)
 logger("org.springframework.cloud", ERROR)
 logger("org.springframework.context", ERROR)
+logger("org.springframework.test", ERROR)
+logger("com.zaxxer.hikari", ERROR)
+logger("org.springframework.data", ERROR)
+logger("org.springframework.boot.test", ERROR)
+logger("reactor", ERROR)
 
 logger("com.cloud.mvc.example.business", DEBUG)
+logger("java.sql.Connection", DEBUG)
+logger("java.sql.Statement", DEBUG)
+logger("java.sql.PreparedStatement", DEBUG)
 
 

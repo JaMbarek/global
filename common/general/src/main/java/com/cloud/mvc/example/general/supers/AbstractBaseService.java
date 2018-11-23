@@ -1,8 +1,11 @@
 package com.cloud.mvc.example.general.supers;
 
 import com.cloud.mvc.example.business.domain.enums.DeleteOperatrs;
+import com.cloud.mvc.example.general.response.PageInfo;
 import com.cloud.mvc.example.general.session.SessionUtils;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -77,5 +80,14 @@ public abstract class AbstractBaseService<A extends BaseEntity, B> implements Ba
         record.setModifyDate(LocalDateTime.now());
         record.setModifyUserId(SessionUtils.getCurrentUserId());
         return mapper.updateByPrimaryKey(record);
+    }
+
+
+    @Override
+    public Mono<PageInfo> paging(B countExample, B listExample) {
+        Long count = mapper.countByExample(countExample);
+        if(count < 1) return Mono.just(PageInfo.EMPTY);
+        List<A> data = mapper.selectByExample(listExample);
+        return Mono.just(PageInfo.create(count, data));
     }
 }
