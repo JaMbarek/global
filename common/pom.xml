@@ -15,7 +15,8 @@
         <module>config</module>
         <module>utils</module>
         <module>domain</module>
-        <module>api</module>
+        <module>api</module
+        >
         <module>auth-client</module>
         <module>message-client</module>
         <module>general</module>
