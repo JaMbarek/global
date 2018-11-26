@@ -1,20 +1,27 @@
 package plugins;
 
+import com.google.common.collect.Lists;
+import jodd.bean.BeanUtil;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
+import org.mybatis.generator.api.dom.java.Field;
 import org.mybatis.generator.api.dom.java.Interface;
 import org.mybatis.generator.api.dom.java.Method;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
+import org.springframework.util.ReflectionUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * lombok插件，不生成set和get方法
  */
 public class LombokPlugin extends PluginAdapter {
+
+    private static List<String> defaultColumnNames = Lists.newArrayList("createDate", "modifyDate", "status", "createUserId", "modifyUserId", "version");
 
     public boolean validate(List<String> list) {
         return true;
@@ -38,6 +45,13 @@ public class LombokPlugin extends PluginAdapter {
         topLevelClass.addJavaDocLine("/**");
         topLevelClass.addJavaDocLine("* Created by Mybatis Generator on " + date2Str(new Date()));
         topLevelClass.addJavaDocLine("*/");
+
+        List<Field> collect = topLevelClass.getFields()
+                .stream()
+                .filter(t -> !defaultColumnNames.contains(t.getName()))
+                .collect(Collectors.toList());
+
+        BeanUtil.declaredForced.setProperty(topLevelClass, "fields", collect);
 
         return true;
     }

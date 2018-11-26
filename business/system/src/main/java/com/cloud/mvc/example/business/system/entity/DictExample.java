@@ -95,6 +95,10 @@ public class DictExample {
         return criteria;
     }
 
+    public static DictExample create() {
+        return new DictExample();
+    }
+
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
 

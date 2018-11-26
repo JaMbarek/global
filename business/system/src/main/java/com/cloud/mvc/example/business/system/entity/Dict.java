@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
-* Created by Mybatis Generator on 2018/11/22
+* Created by Mybatis Generator on 2018/11/26
 */
 @Data
 @Builder
@@ -23,9 +23,41 @@ public class Dict extends BaseEntity {
 
     private String value;
 
-    private LocalDateTime createDate;
+    /**
+     * 这是Mybatis Generator拓展插件生成的枚举(请勿删除).
+     * This class corresponds to the database table dict
+     *
+     * @mbg.generated
+     */
+    public enum Column {
+        id("id"),
+        group("group"),
+        key("key"),
+        value("value"),
+        createDate("create_date"),
+        modifyDate("modify_date"),
+        status("status");
 
-    private LocalDateTime modifyDate;
+        private final String column;
 
-    private Integer status;
+        public String value() {
+            return this.column;
+        }
+
+        public String getValue() {
+            return this.column;
+        }
+
+        Column(String column) {
+            this.column = column;
+        }
+
+        public String desc() {
+            return this.column + " DESC";
+        }
+
+        public String asc() {
+            return this.column + " ASC";
+        }
+    }
 }

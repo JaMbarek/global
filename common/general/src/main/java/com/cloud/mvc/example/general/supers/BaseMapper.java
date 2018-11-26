@@ -29,4 +29,15 @@ public interface BaseMapper<A extends BaseEntity, B> {
     int updateByPrimaryKeySelective(A record);
 
     int updateByPrimaryKey(A record);
+
+    int batchInsert(@Param("list") List<A> list);
+
+    int batchInsertSelective(@Param("list") List<A> list, @Param("selective") Enum ... selective);
+
+    A selectOneByExample(B example);
+
+    int upsert(A record);
+
+    int upsertSelective(A record);
+
 }

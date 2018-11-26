@@ -1,69 +1,78 @@
+/*
+ * Copyright (c) 2017.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package plugins;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
-import org.mybatis.generator.api.dom.java.*;
+import org.mybatis.generator.api.dom.java.Interface;
+import org.mybatis.generator.api.dom.java.TopLevelClass;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.ListUtilities;
 import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import plugins.utils.CommTools;
+import plugins.utils.CommentTools;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * inspire  https://gitee.com/whan0216/mybatis-generator-plugin.git
+ * 批量插入插件
  */
 public class BatchInsertPlugin extends PluginAdapter {
+    public static final String METHOD_BATCH_INSERT = "batchInsert";  // 方法名
+    public static final String METHOD_BATCH_INSERT_SELECTIVE = "batchInsertSelective";  // 方法名
 
-    private static final String BATCH_INSERT_METHOD = "batchInsert";
-    private static final String BATCH_INSERT_SELECT_METHOD = "batchInsertSelective";
-
-    private static final Logger logger = LoggerFactory.getLogger(BatchInsertPlugin.class);
 
     @Override
-    public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        // 1. batchInsert
-        Method mBatchInsert = new Method(BATCH_INSERT_METHOD);
-        mBatchInsert.setReturnType(FullyQualifiedJavaType.getIntInstance());
-        // 添加参数
-        FullyQualifiedJavaType tList = FullyQualifiedJavaType.getNewListInstance();
-        tList.addTypeArgument(introspectedTable.getRules().calculateAllFieldsClass());
-        mBatchInsert.addParameter(new Parameter(tList, "list", "@Param(\"list\")"));
-        // 添加方法说明
-        mBatchInsert.addJavaDocLine("/**"); //$NON-NLS-1$
-        mBatchInsert.addJavaDocLine(" * batch insert method generator");
-        mBatchInsert.addJavaDocLine(" */"); //$NON-NLS-1$
-        // interface 增加方法
-        interfaze.addMethod(mBatchInsert);
-
-        // 2. batchInsertSelective
-        Method mBatchInsertSelective = new Method(BATCH_INSERT_SELECT_METHOD);
-        mBatchInsertSelective.setReturnType(FullyQualifiedJavaType.getIntInstance());
-        // 添加参数
-        FullyQualifiedJavaType tSelective = new FullyQualifiedJavaType(introspectedTable.getRules().calculateAllFieldsClass().getShortName()+"."+ModelColumnPlugin.ENUM_NAME);
-        mBatchInsertSelective.addParameter(new Parameter(tList, "list", "@Param(\"list\")"));
-        mBatchInsertSelective.addParameter(new Parameter(tSelective, "selective", "@Param(\"selective\")", true));
-        // 添加方法说明
-        mBatchInsertSelective.addJavaDocLine("/**"); //$NON-NLS-1$
-        mBatchInsertSelective.addJavaDocLine(" * batch insert selective method generator");
-        mBatchInsertSelective.addJavaDocLine(" */"); //$NON-NLS-1$
-        // interface 增加方法
-        interfaze.addMethod(mBatchInsertSelective);
-
+    public boolean validate(List<String> warnings) {
         return true;
     }
 
+    /**
+     * Java Client Methods 生成
+     * 具体执行顺序 http://www.mybatis.org/generator/reference/pluggingIn.html
+     *
+     * @param interfaze
+     * @param topLevelClass
+     * @param introspectedTable
+     * @return
+     */
+    @Override
+    public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        return true;
+    }
+
+    /**
+     * SQL Map Methods 生成
+     * 具体执行顺序 http://www.mybatis.org/generator/reference/pluggingIn.html
+     *
+     * @param document
+     * @param introspectedTable
+     * @return
+     */
     @Override
     public boolean sqlMapDocumentGenerated(Document document, IntrospectedTable introspectedTable) {
         // 1. batchInsert
         XmlElement batchInsertEle = new XmlElement("insert");
-        batchInsertEle.addAttribute(new Attribute("id", BATCH_INSERT_METHOD));
+        batchInsertEle.addAttribute(new Attribute("id", METHOD_BATCH_INSERT));
         // 参数类型
         batchInsertEle.addAttribute(new Attribute("parameterType", "map"));
         // 添加注释(!!!必须添加注释，overwrite覆盖生成时，@see XmlFileMergerJaxp.isGeneratedNode会去判断注释中是否存在OLD_ELEMENT_TAGS中的一点，例子：@mbg.generated)
@@ -118,12 +127,11 @@ public class BatchInsertPlugin extends PluginAdapter {
         batchInsertEle.addElement(foreachElement);
         if (context.getPlugins().sqlMapInsertElementGenerated(batchInsertEle, introspectedTable)) {
             document.getRootElement().addElement(batchInsertEle);
-            logger.debug("itfsw(批量插入插件):" + introspectedTable.getMyBatis3XmlMapperFileName() + "增加batchInsert实现方法。");
         }
 
         // 2. batchInsertSelective
         XmlElement element = new XmlElement("insert");
-        element.addAttribute(new Attribute("id", BATCH_INSERT_SELECT_METHOD));
+        element.addAttribute(new Attribute("id", METHOD_BATCH_INSERT_SELECTIVE));
         // 参数类型
         element.addAttribute(new Attribute("parameterType", "map"));
         // 添加注释(!!!必须添加注释，overwrite覆盖生成时，@see XmlFileMergerJaxp.isGeneratedNode会去判断注释中是否存在OLD_ELEMENT_TAGS中的一点，例子：@mbg.generated)
@@ -138,7 +146,7 @@ public class BatchInsertPlugin extends PluginAdapter {
         foreachInsertColumns.addAttribute(new Attribute("collection", "selective"));
         foreachInsertColumns.addAttribute(new Attribute("item", "column"));
         foreachInsertColumns.addAttribute(new Attribute("separator", ","));
-        foreachInsertColumns.addElement(new TextElement("${column.value}"));
+        foreachInsertColumns.addElement(new TextElement("`${column.value}`"));
 
         element.addElement(foreachInsertColumns);
 
@@ -179,14 +187,9 @@ public class BatchInsertPlugin extends PluginAdapter {
 
         if (context.getPlugins().sqlMapInsertElementGenerated(element, introspectedTable)) {
             document.getRootElement().addElement(element);
-            logger.debug("itfsw(批量插入插件):" + introspectedTable.getMyBatis3XmlMapperFileName() + "增加batchInsertSelective实现方法。");
         }
 
         return true;
     }
 
-    @Override
-    public boolean validate(List<String> warnings) {
-        return true;
-    }
 }

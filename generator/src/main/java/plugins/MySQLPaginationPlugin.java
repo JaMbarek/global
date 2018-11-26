@@ -101,6 +101,18 @@ public class MySQLPaginationPlugin extends PluginAdapter {
         commentGenerator.addGeneralMethodComment(method, introspectedTable);
         topLevelClass.addMethod(method);
 
+
+        Method create = new Method();
+        create.setVisibility(JavaVisibility.PUBLIC);
+        create.setStatic(true);
+        create.setName("create");
+        create.setReturnType(topLevelClass.getType());
+        create.addBodyLine("return new " + topLevelClass.getType().getShortName() + "();");
+
+        commentGenerator.addGeneralMethodComment(create, introspectedTable);
+        topLevelClass.addMethod(create);
+
+
         topLevelClass.getMethods()
                 .stream()
                 .filter(t -> t.getName().equals("clear"))

@@ -19,7 +19,6 @@ import java.util.List;
 public class DictServiceImpl extends AbstractBaseService<Dict, DictExample> implements DictService {
 
 
-    @Autowired
     ServerWebExchange exchange;
 
     @Override
