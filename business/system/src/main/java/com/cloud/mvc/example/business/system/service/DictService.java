@@ -24,5 +24,5 @@ public interface DictService extends BaseService<Dict, DictExample> {
     Flux<Dict> getBeanByIds(List<Long> ids);
 
 
-    Mono<PageInfo> selectByPaging(DictVo vo);
+    PageInfo selectByPaging(DictVo vo);
 }

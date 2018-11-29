@@ -36,7 +36,7 @@ public class DictServiceImpl extends AbstractBaseService<Dict, DictExample> impl
 
 
     @Override
-    public Mono<PageInfo> selectByPaging(DictVo vo) {
+    public PageInfo selectByPaging(DictVo vo) {
         DictExample countExample = new DictExample();
         countExample.createCriteria().andKeyEqualTo(vo.getKey())
                 .andValueEqualTo(vo.getValue());
