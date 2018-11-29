@@ -1,4 +1,4 @@
-package com.cloud.mvc.example.business.system.dto;
+package com.cloud.mvc.example.business.system.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -14,11 +14,7 @@ import java.time.LocalDateTime;
 @ApiModel
 public class DictDto {
 
-    interface Create{}
-    interface Update{}
-
     @ApiModelProperty("主键")
-    @NotNull
     private Long id;
 
     @ApiModelProperty("组名称")

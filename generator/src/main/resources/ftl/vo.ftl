@@ -16,14 +16,8 @@ import ${i};
 @ApiModel
 public class ${className} {
 
-    interface Create{}
-    interface Update{}
-
 <#list columns as column>
     @ApiModelProperty("${column.remarks}")
-    <#if !column.nullable>
-    @NotNull
-    </#if>
     private ${column.fullyQualifiedJavaType.shortName} ${column.javaProperty};
 
 </#list>

@@ -1,11 +1,8 @@
 package com.cloud.mvc.example.general.supers;
 
-import com.cloud.mvc.example.business.domain.enums.DeleteOperatrs;
 import com.cloud.mvc.example.general.response.PageInfo;
 import com.cloud.mvc.example.general.session.SessionUtils;
-import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
-import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,14 +17,31 @@ public abstract class AbstractBaseService<A extends BaseEntity, B> implements Ba
         return mapper.countByExample(example);
     }
 
+
     @Override
-    public int deleteByExample(B example, DeleteOperatrs type) {
+    public int deleteByExampleLogic(A record, B example) {
+        record.setStatus(0);
+        record.setModifyUserId(SessionUtils.getCurrentUserId());
+        record.setModifyDate(LocalDateTime.now());
+        return mapper.updateByExample(record, example);
+    }
+
+    @Override
+    public int deleteByExamplePhysic(B example) {
         return mapper.deleteByExample(example);
     }
 
     @Override
-    public int deleteByPrimaryKey(Long id, DeleteOperatrs type) {
-        return mapper.deleteByPrimaryKey(id );
+    public int deleteByPrimaryKeyLogic(A record) {
+        record.setStatus(0);
+        record.setModifyUserId(SessionUtils.getCurrentUserId());
+        record.setModifyDate(LocalDateTime.now());
+        return mapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int deleteByPrimaryKeyPhysic(Long id) {
+        return mapper.deleteByPrimaryKey(id);
     }
 
     @Override
@@ -84,10 +98,10 @@ public abstract class AbstractBaseService<A extends BaseEntity, B> implements Ba
 
 
     @Override
-    public Mono<PageInfo> paging(B countExample, B listExample) {
+    public PageInfo paging(B countExample, B listExample) {
         Long count = mapper.countByExample(countExample);
-        if(count < 1) return Mono.just(PageInfo.EMPTY);
+        if(count < 1) return PageInfo.EMPTY;
         List<A> data = mapper.selectByExample(listExample);
-        return Mono.just(PageInfo.create(count, data));
+        return PageInfo.create(count, data);
     }
 }

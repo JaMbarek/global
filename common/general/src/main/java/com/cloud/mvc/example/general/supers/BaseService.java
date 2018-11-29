@@ -10,9 +10,13 @@ public interface BaseService<A extends BaseEntity, B> {
 
     long countByExample(B example);
 
-    int deleteByExample(B example, DeleteOperatrs type);
+    int deleteByExampleLogic(A record, B example);
 
-    int deleteByPrimaryKey(Long id, DeleteOperatrs type);
+    int deleteByExamplePhysic(B example);
+
+    int deleteByPrimaryKeyLogic(A record);
+
+    int deleteByPrimaryKeyPhysic(Long id);
 
     int insert(A record);
 
@@ -30,6 +34,6 @@ public interface BaseService<A extends BaseEntity, B> {
 
     int updateByPrimaryKey(A record);
 
-    Mono<PageInfo> paging(B countExample, B listExample);
+    PageInfo paging(B countExample, B listExample);
 
 }

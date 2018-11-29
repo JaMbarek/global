@@ -35,6 +35,13 @@
             <property name="dto.out.path" value="E:\\github\\global\\business\\system\\src\\main\\java\\com\\cloud\\mvc\\example\\business\\system\\dto" />
         </plugin>
 
+        <plugin type="plugins.VoPlugin" >
+            <property name="packageName" value="com.cloud.mvc.example.business.system.vo" />
+            <property name="dto.template.path" value="E:\github\global\generator\src\main\resources\ftl" />
+            <property name="file.name" value="vo.ftl" />
+            <property name="dto.out.path" value="E:\\github\\global\\business\\system\\src\\main\\java\\com\\cloud\\mvc\\example\\business\\system\\vo" />
+        </plugin>
+
 
         <plugin type="plugins.MySQLPaginationPlugin"></plugin>
         <commentGenerator>
