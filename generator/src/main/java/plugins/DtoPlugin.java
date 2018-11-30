@@ -24,7 +24,7 @@ import static java.util.stream.Collectors.toList;
  */
 public class DtoPlugin extends PluginAdapter {
 
-    private static List<String> defaultColumnNames = Lists.newArrayList("createDate", "modifyDate", "status", "createUserId", "modifyUserId", "version");
+    private static List<String> defaultColumnNames = Lists.newArrayList("createDate", "modifyDate", "createUserId", "modifyUserId", "version");
 
     private static final Logger logger = LoggerFactory.getLogger(DtoPlugin.class);
 

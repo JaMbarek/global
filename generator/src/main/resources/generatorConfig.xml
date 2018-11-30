@@ -18,8 +18,8 @@
             <property name="hasLombok" value="true"/>
         </plugin>
         <plugin type="plugins.MapperPlugin">
-            <property name="baseInterfaceName" value="com.cloud.mvc.example.general.supers.BaseMapper" />
-            <property name="baseEntityName" value="com.cloud.mvc.example.general.supers.BaseEntity" />
+            <property name="baseInterfaceName" value="com.cloud.mvc.example.business.common.supers.BaseMapper" />
+            <property name="baseEntityName" value="com.cloud.mvc.example.business.common.supers.BaseEntity" />
         </plugin>
 
         <plugin type="plugins.BatchInsertPlugin" />
@@ -40,6 +40,14 @@
             <property name="dto.template.path" value="E:\github\global\generator\src\main\resources\ftl" />
             <property name="file.name" value="vo.ftl" />
             <property name="dto.out.path" value="E:\\github\\global\\business\\system\\src\\main\\java\\com\\cloud\\mvc\\example\\business\\system\\vo" />
+        </plugin>
+
+        <plugin type="plugins.ServicePlugin" >
+            <property name="packageName" value="com.cloud.mvc.example.business.system.service" />
+            <property name="service.template.path" value="E:\github\global\generator\src\main\resources\ftl" />
+            <property name="service.name" value="service.ftl" />
+            <property name="impl.name" value="impl.ftl" />
+            <property name="service.out.path" value="E:\\github\\global\\business\\system\\src\\main\\java\\com\\cloud\\mvc\\example\\business\\system\\service" />
         </plugin>
 
 

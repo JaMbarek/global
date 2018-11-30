@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -13,7 +14,6 @@
         <module name="config (1) (com.cloud.mvc.example.basic)" />
         <module name="eureka" />
         <module name="gateway" />
-        <module name="general" />
         <module name="generator" />
         <module name="message-client" />
         <module name="messageclient" />
@@ -24,7 +24,11 @@
         <module name="user" />
         <module name="zipkin-server" />
         <module name="ZipkinServer" />
+        <module name="zuul" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="general" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

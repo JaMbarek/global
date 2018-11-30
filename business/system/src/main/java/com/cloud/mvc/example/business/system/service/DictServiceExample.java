@@ -36,16 +36,14 @@ public class DictServiceExample {
     }
 
     public int insert(){
-        Dict build = Dict.builder().createDate(LocalDateTime.now())
+        Dict build = Dict.builder()
                 .key("key")
-                .value("value")
-                .status(1).build();
+                .value("value").build();
         return mapper.insert(build);
     }
 
     public int insertSelective(){
         Dict dict = Dict.builder()
-                .createDate(LocalDateTime.now())
                 .key("select")
                 .value("selectValue")
                 .build();
@@ -81,7 +79,12 @@ public class DictServiceExample {
     }
 
     public int updateByPrimaryKeySelective(){
-        return mapper.updateByPrimaryKeySelective(Dict.builder().createDate(LocalDateTime.now()).id(1L).build());
+
+        Dict dict = new Dict();
+        dict.setCreateDate(LocalDateTime.now());
+        dict.setId(1L);
+
+        return mapper.updateByPrimaryKeySelective(dict);
     }
 
     public int updateByPrimaryKey(){
@@ -90,14 +93,14 @@ public class DictServiceExample {
 
     public int batchInsert(){
         List<Dict> collect = IntStream.rangeClosed(1, 100)
-                .mapToObj(t -> Dict.builder().status(1).createDate(LocalDateTime.now()).key("key" + t).value("value" + t).build())
+                .mapToObj(t -> Dict.builder().key("key" + t).value("value" + t).build())
                 .collect(Collectors.toList());
         return mapper.batchInsert(collect);
     }
 
     public int batchInsertSelective(){
         List<Dict> collect = IntStream.rangeClosed(1, 100)
-                .mapToObj(t -> Dict.builder().status(1).createDate(LocalDateTime.now()).key("key" + t).value("value" + t).build())
+                .mapToObj(t -> Dict.builder().key("key" + t).value("value" + t).build())
                 .collect(Collectors.toList());
         return mapper.batchInsertSelective(collect, Dict.Column.key, Dict.Column.value, Dict.Column.createDate);
     }

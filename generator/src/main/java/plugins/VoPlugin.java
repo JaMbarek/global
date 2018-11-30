@@ -21,7 +21,7 @@ import static java.util.stream.Collectors.toList;
 
 public class VoPlugin extends PluginAdapter {
 
-    private static List<String> defaultColumnNames = Lists.newArrayList("createDate", "modifyDate", "status", "createUserId", "modifyUserId", "version");
+    private static List<String> defaultColumnNames = Lists.newArrayList("createUserId", "modifyUserId", "version");
 
     private static final Logger logger = LoggerFactory.getLogger(DtoPlugin.class);
 
@@ -56,7 +56,7 @@ public class VoPlugin extends PluginAdapter {
                 .collect(toList());
 
 
-        final String className = topLevelClass.getType().getShortName().concat("Dto");
+        final String className = topLevelClass.getType().getShortName().concat("Vo");
         TableEntity entity = new TableEntity();
         entity.setClassName(className);
         entity.setPackageName(packageName);

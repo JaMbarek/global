@@ -19,7 +19,6 @@
         >
         <module>auth-client</module>
         <module>message-client</module>
-        <module>general</module>
         <module>transaction</module>
     </modules>
 
@@ -57,7 +56,11 @@
             <version>2.9.2</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>1.5.2</version>
+        </dependency>
 
     </dependencies>
 

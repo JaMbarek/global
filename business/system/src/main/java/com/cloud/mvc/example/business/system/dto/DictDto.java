@@ -4,15 +4,17 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.NotNull;
+import com.cloud.mvc.example.business.common.supers.BaseDto;
+import com.cloud.mvc.example.business.common.supers.BaseEntity;
 import java.time.LocalDateTime;
 
 /**
-* Created by Administrator on 2018-11-26
+* Created by Administrator on 2018-11-30 16:44:24
 *
 */
 @Data
 @ApiModel
-public class DictDto {
+public class DictDto extends BaseDto{
 
     interface Create{}
     interface Update{}
@@ -29,5 +31,9 @@ public class DictDto {
 
     @ApiModelProperty("vallue值")
     private String value;
+
+    @ApiModelProperty("状态1有效0无效")
+    private Integer status;
+
 
 }

@@ -1,6 +1,6 @@
 package com.cloud.mvc.example.business.system.entity;
 
-import com.cloud.mvc.example.general.supers.BaseEntity;
+import com.cloud.mvc.example.business.common.supers.BaseEntity;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
-* Created by Mybatis Generator on 2018/11/29
+* Created by Mybatis Generator on 2018/11/30
 */
 @Data
 @Builder

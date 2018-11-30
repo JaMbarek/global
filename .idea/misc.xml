@@ -14,11 +14,13 @@
         <option value="$PROJECT_DIR$/basic/monitor/AdminServer/pom.xml" />
         <option value="$PROJECT_DIR$/business/user/pom.xml" />
         <option value="$PROJECT_DIR$/business/system/pom.xml" />
+        <option value="$PROJECT_DIR$/basic/zuul/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/basic/shareable/pom.xml" />
+        <option value="$PROJECT_DIR$/common/general/pom.xml" />
       </set>
     </option>
   </component>

@@ -20,7 +20,5 @@ public class DictServiceImplTest {
     DictService service;
     @Test
     public void getBeanByIds() {
-        service.getBeanByIds(Lists.newArrayList(11L, 2L, 3L))
-                .subscribe(t -> System.out.println(t));
     }
 }

@@ -1,16 +1,40 @@
 package com.cloud.mvc.example.business.system.vo;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.NotNull;
+import com.cloud.mvc.example.business.common.supers.BaseVo;
+import com.cloud.mvc.example.business.common.supers.BaseEntity;
+import java.time.LocalDateTime;
 
+/**
+* Created by Administrator on 2018-11-30 16:44:24
+*
+*/
 @Data
 @ApiModel
-public class DictVo {
+public class DictVo extends BaseVo{
 
-    @ApiModelProperty("key")
+    @ApiModelProperty("主键")
+    private Long id;
+
+    @ApiModelProperty("组名称")
+    private String group;
+
+    @ApiModelProperty("key值")
     private String key;
 
-    @ApiModelProperty("value")
+    @ApiModelProperty("vallue值")
     private String value;
+
+    @ApiModelProperty("创建时间")
+    private LocalDateTime createDate;
+
+    @ApiModelProperty("修改时间")
+    private LocalDateTime modifyDate;
+
+    @ApiModelProperty("状态1有效0无效")
+    private Integer status;
+
 }
