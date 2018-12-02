@@ -29,12 +29,6 @@
 
         <dependency>
             <groupId>com.cloud.mvc.example</groupId>
-            <artifactId>general</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.cloud.mvc.example</groupId>
             <artifactId>utils</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -51,7 +45,6 @@
             <artifactId>config</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>com.cloud.mvc.example</groupId>
             <artifactId>domain</artifactId>
@@ -229,10 +222,6 @@
                         <artifactId>generator</artifactId>
                         <version>1.0-SNAPSHOT</version>
                     </dependency>
-
-
-
-
 
                 </dependencies>
             </plugin>

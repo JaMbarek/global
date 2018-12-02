@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/basic" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/basic/config" charset="UTF-8" />
@@ -18,7 +18,6 @@
     <file url="file://$PROJECT_DIR$/common/auth-client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/config" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/domain" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/common/general" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/message-client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/transaction" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/utils" charset="UTF-8" />
@@ -28,5 +27,6 @@
     <file url="file://$PROJECT_DIR$/generator/src/main/java/plugins/SelectOneByExamplePlugin.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/generator/src/main/java/plugins/UpsertPlugin.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/task" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

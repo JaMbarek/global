@@ -12,6 +12,7 @@
         <module name="auth-client" />
         <module name="authclient" />
         <module name="config (1) (com.cloud.mvc.example.basic)" />
+        <module name="config (2) (com.cloud.mvc.example)" />
         <module name="eureka" />
         <module name="gateway" />
         <module name="generator" />

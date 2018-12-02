@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
+import java.util.Locale;
 import java.util.Properties;
 
 /**
@@ -28,4 +30,6 @@ public class CodeMessagesResourceConfiguration {
         rbms.setFileEncodings(p);
         return rbms;
     }
+
+
 }

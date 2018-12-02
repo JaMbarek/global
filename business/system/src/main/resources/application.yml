@@ -1,13 +1,13 @@
 server:
   port: 9000
-
+  address: cloud.test.com
 eureka:
   instance:
     prefer-ip-address: true
-    ip-address: 192.168.1.146
+    ip-address: cloud.test.com
   client:
     service-url:
-      defaultZone: http://admin:admin123@localhost:10000/eureka/
+      defaultZone: http://admin:admin123@cloud.test.com:10000/eureka/
     fetch-registry: true
     registry-fetch-interval-seconds: 20
 

@@ -1,5 +1,8 @@
 package com.cloud.mvc.example.business.common.config.message;
 
+import lombok.Data;
+
+@Data
 public final class Resp<T> {
 
     T data;

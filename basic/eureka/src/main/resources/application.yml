@@ -1,6 +1,6 @@
 server:
   port: 10000
-  address: localhost
+  address: cloud.test.com
 spring:
   application:
     name: EurekaServer

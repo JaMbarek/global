@@ -10,6 +10,8 @@ import com.cloud.mvc.example.business.system.vo.DictVo;
 import com.cloud.mvc.example.utils.mapper.BeanMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,8 @@ import static com.cloud.mvc.example.business.common.constants.UrlConstants.Syste
 @Api(tags = "系统常量接口")
 public class DictController extends BaseController {
 
+    private static final Logger logger = LoggerFactory.getLogger(DictController.class);
+
     @Autowired
     DictService service;
 
@@ -28,7 +32,7 @@ public class DictController extends BaseController {
     @PostMapping
     public Resp save(@Validated DictDto dictDto) throws Exception {
         int res = service.insert(BeanMapper.map(dictDto, Dict.class));
-        return Resp.success(res);
+        return Resp.success("还可以");
     }
 
     @ApiOperation("修改")
@@ -41,8 +45,10 @@ public class DictController extends BaseController {
     @ApiOperation("查找一个")
     @GetMapping("{id}")
     public Resp findById(@PathVariable Long id){
-        Dict dict = service.selectByPrimaryKey(id);
-        return Resp.success(dict.map(DictVo.class));
+//        Dict dict = service.selectByPrimaryKey(id);
+        Resp resp = Resp.success("哈可以");
+        logger.debug("resp:{}",  resp.toString());
+        return resp;
     }
 
     @ApiOperation("删除")
