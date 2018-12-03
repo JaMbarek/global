@@ -1,33 +1,5 @@
 server:
   port: 10005
-spring:
-  application:
-    name: Gateway
-
-  cloud:
-    gateway:
-#      discovery:
-#        locator:
-#          lower-case-service-id: true
-#          enabled: true
-      routes:
-#      - id: user
-#        uri: lb://user
-#        predicates:
-#        - Path=${server.servlet.context-path}/user/**
-#        filters:
-#        - SwaggerHeaderFilter
-#        - StripPrefix= 1
-      - id: 163
-        uri: http://www.163.com
-#        uri: lb://SYSTEM
-        predicates:
-        - Path= /163/**
-#        filters:
-#        - RewritePath=/SYSTEM/(?<segment>.*), /$\{segment}
-#        - SwaggerHeaderFilter
-#        - StripPrefix=1
-
 
 eureka:
   instance:
@@ -37,7 +9,22 @@ eureka:
       defaultZone: http://admin:admin123@cloud.test.com:10000/eureka/
     fetch-registry: true
     registry-fetch-interval-seconds: 5
-#logging:
-#  level:
-#    root: DEBUG
 
+spring:
+  application:
+    name: Gateway
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: system
+          uri: lb://system
+          predicates:
+            - Path= /system/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
