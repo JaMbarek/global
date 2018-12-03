@@ -13,6 +13,10 @@ eureka:
 spring:
   application:
     name: Gateway
+  redis:
+    host: 192.168.204.10
+    password: admin123
+    port: 6379
 
   cloud:
     gateway:
@@ -28,3 +32,17 @@ spring:
           filters:
             - SwaggerHeaderFilter
             - StripPrefix=1
+            - AddRequestHeader=X-Request-id, system
+            - AddRequestParameter=param, 10
+            - AddResponseHeader= X-Response-id, system
+            - name: Retry
+              args:
+                retries: 3
+                statuses: BAD_GATEWAY
+      default-filters:
+      - name: RequestRateLimiter
+        args:
+          redis-rate-limiter.replenishRate: 1  #令牌桶的容积
+          redis-rate-limiter.burstCapacity: 1  #流速 每秒
+          rate-limiter: "#{@defaultRedisRateLimiter}"  #SPEL表达式去的对应的bean
+          key-resolver: "#{@remoteAddressKeyResolver}" #SPEL表达式去的对应的bean
