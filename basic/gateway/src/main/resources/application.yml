@@ -14,7 +14,7 @@ spring:
   application:
     name: Gateway
   redis:
-    host: 192.168.204.10
+    host: cloud.db.com
     password: admin123
     port: 6379
 
