@@ -14,8 +14,11 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 import static com.cloud.mvc.example.business.common.constants.UrlConstants.SystemUrlConstants.SYSTEM_DICT_URL;
 
@@ -48,7 +51,7 @@ public class DictController extends BaseController {
 
     @ApiOperation("查找一个")
     @GetMapping("{id}")
-    public Resp findById(@PathVariable Long id){
+    public Resp findById(@PathVariable Long id, HttpServletRequest request){
 //        Dict dict = service.selectByPrimaryKey(id);
         Resp resp = Resp.success("哈可以");
         logger.debug("resp:{}",  resp.toString());
@@ -69,7 +72,10 @@ public class DictController extends BaseController {
         return (Resp) info.map(Resp :: success);
     }
 
-
+    @PostMapping("/test")
+    public Resp test(@Header("X-Request-id") String id, @Header("X-Response-id") String rId){
+        return Resp.success(id + "-" + rId);
+    }
 
 
 

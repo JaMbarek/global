@@ -28,8 +28,8 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title(name +" 模块接口文档")
                 .description(groupName +" API接口列表")
-                .termsOfServiceUrl("http://m-chain.com/")
-                .contact(new Contact("m-chain", "", ""))
+                .termsOfServiceUrl("http://cloud.test.com/")
+                .contact(new Contact("cloud", "", ""))
                 .version("1.0")
                 .build();
     }
@@ -39,7 +39,6 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .host("cloud.test.com:10005/system") //gateway中会过滤掉服务前缀，这里在实例中添加前缀
                 .globalOperationParameters(parameters())
-
                 .apiInfo(apiInfo(name))
                 .select()
                 .paths(PathSelectors.any())

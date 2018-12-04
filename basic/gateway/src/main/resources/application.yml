@@ -30,6 +30,7 @@ spring:
           predicates:
             - Path= /system/**
           filters:
+            # https://segmentfault.com/a/1190000015700907
             - SwaggerHeaderFilter
 #            - StripPrefix=0
             - PrefixPath=/system
