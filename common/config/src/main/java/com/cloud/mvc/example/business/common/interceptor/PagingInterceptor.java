@@ -1,6 +1,8 @@
 package com.cloud.mvc.example.business.common.interceptor;
 
 import com.cloud.mvc.example.business.common.constants.PageConstants;
+import com.cloud.mvc.example.business.common.request.PageHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,9 @@ import java.util.Optional;
 
 @Component
 public class PagingInterceptor extends AbstractInterceptor implements PageConstants {
+
+    @Autowired
+    PageHolder holder;
 
     @Override
     String path() {
@@ -26,8 +31,9 @@ public class PagingInterceptor extends AbstractInterceptor implements PageConsta
                 .map(t -> Integer.parseInt(t))
                 .orElse(defaultLimit);
 
-        request.setAttribute(page, currPage);
-        request.setAttribute(limit, size);
+        holder.setPage(currPage);
+        holder.setLimit(size);
+
         return true;
     }
 }

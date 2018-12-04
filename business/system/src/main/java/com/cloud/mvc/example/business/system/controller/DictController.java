@@ -2,6 +2,7 @@ package com.cloud.mvc.example.business.system.controller;
 
 import com.cloud.mvc.example.business.common.config.message.PageInfo;
 import com.cloud.mvc.example.business.common.config.message.Resp;
+import com.cloud.mvc.example.business.common.request.PageHolder;
 import com.cloud.mvc.example.business.common.supers.BaseController;
 import com.cloud.mvc.example.business.system.dto.DictDto;
 import com.cloud.mvc.example.business.system.entity.Dict;
@@ -28,6 +29,9 @@ public class DictController extends BaseController {
     @Autowired
     DictService service;
 
+    @Autowired
+    PageHolder holder;
+
     @ApiOperation("添加")
     @PostMapping
     public Resp save(@Validated DictDto dictDto) throws Exception {
@@ -48,6 +52,7 @@ public class DictController extends BaseController {
 //        Dict dict = service.selectByPrimaryKey(id);
         Resp resp = Resp.success("哈可以");
         logger.debug("resp:{}",  resp.toString());
+        logger.debug("page:", holder.toString());
         return resp;
     }
 
@@ -59,8 +64,8 @@ public class DictController extends BaseController {
 
     @ApiOperation("分页查找列表")
     @GetMapping("/paging")
-    public Resp paging(){
-        PageInfo info = service.paging(null, null);
+    public Resp paging(@RequestParam(required = false) String key){
+        PageInfo info = service.selectByPaging(key);
         return (Resp) info.map(Resp :: success);
     }
 
