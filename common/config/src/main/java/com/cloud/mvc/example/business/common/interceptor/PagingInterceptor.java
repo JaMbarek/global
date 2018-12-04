@@ -16,7 +16,7 @@ public class PagingInterceptor extends AbstractInterceptor implements PageConsta
     PageHolder holder;
 
     @Override
-    String path() {
+    public String path() {
         return "/**";
     }
 

@@ -31,7 +31,8 @@ spring:
             - Path= /system/**
           filters:
             - SwaggerHeaderFilter
-            - StripPrefix=1
+#            - StripPrefix=0
+            - PrefixPath=/system
             - AddRequestHeader=X-Request-id, system
             - AddRequestParameter=param, 10
             - AddResponseHeader= X-Response-id, system

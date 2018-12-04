@@ -53,5 +53,6 @@ logger("com.cloud.mvc.example.business", DEBUG)
 logger("java.sql.Connection", DEBUG)
 logger("java.sql.Statement", DEBUG)
 logger("java.sql.PreparedStatement", DEBUG)
+logger("io.swagger.models.parameters.AbstractSerializableParameter", ERROR)//在访问swagger-ui时会报错，据说是官方bug，这里先调整日志级别
 
 

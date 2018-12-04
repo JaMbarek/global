@@ -21,5 +21,17 @@ spring:
     password: root
   application:
     name: system
+  redis:
+    host: cloud.db.com
+    password: admin123
+    port: 6379
+    database: 0
+    timeout: 3000
+    lettuce:
+      pool:
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1
+        max-active: 8
 logging:
   config: classpath:logback.groovy
