@@ -22,29 +22,30 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
+#          enabled: true //加入此配置后，后面定义的router将不再生效
           lower-case-service-id: true
       routes:
         - id: system
           uri: lb://system
+#          uri: http://cloud.test.com:9000
           predicates:
-            - Path= /system/**
+          - Path= /system/**
           filters:
             # https://segmentfault.com/a/1190000015700907
-            - SwaggerHeaderFilter
-#            - StripPrefix=0
-            - PrefixPath=/system
-            - AddRequestHeader=X-Request-id, system
-            - AddRequestParameter=param, 10
-            - AddResponseHeader= X-Response-id, system
-            - name: Retry
-              args:
-                retries: 3
-                statuses: BAD_GATEWAY
-      default-filters:
-      - name: RequestRateLimiter
-        args:
-          redis-rate-limiter.replenishRate: 1  #令牌桶的容积
-          redis-rate-limiter.burstCapacity: 1  #流速 每秒
-          rate-limiter: "#{@defaultRedisRateLimiter}"  #SPEL表达式去的对应的bean
-          key-resolver: "#{@remoteAddressKeyResolver}" #SPEL表达式去的对应的bean
+#            - SwaggerHeaderFilter
+          - StripPrefix=1
+#            - PrefixPath=/system
+          - AddRequestHeader=NAME, Bar
+          - AddRequestParameter=param, 10
+          - AddResponseHeader= X-Response-id, system
+          - name: Retry
+            args:
+              retries: 3
+              statuses: BAD_GATEWAY
+#      default-filters:
+#      - name: RequestRateLimiter
+#        args:
+#          redis-rate-limiter.replenishRate: 1  #令牌桶的容积
+#          redis-rate-limiter.burstCapacity: 1  #流速 每秒
+#          rate-limiter: "#{@defaultRedisRateLimiter}"  #SPEL表达式去的对应的bean
+#          key-resolver: "#{@remoteAddressKeyResolver}" #SPEL表达式去的对应的bean

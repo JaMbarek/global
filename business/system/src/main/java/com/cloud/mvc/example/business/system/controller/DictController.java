@@ -73,10 +73,19 @@ public class DictController extends BaseController {
     }
 
     @PostMapping("/test")
-    public Resp test(@Header("X-Request-id") String id, @Header("X-Response-id") String rId){
+    public Resp test(@Header("X-Request-id") String id, @Header("headler") String rId, HttpServletRequest request){
+
+
+        System.out.println(request.getHeader("NAME"));
+        System.out.println(request.getHeader("headler"));
+
         return Resp.success(id + "-" + rId);
     }
 
-
+    @PostMapping("/error")
+    public Resp error(){
+        System.out.println("-----------------------ex");
+        throw new RuntimeException("ex");
+    }
 
 }

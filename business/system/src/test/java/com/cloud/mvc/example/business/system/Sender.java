@@ -16,7 +16,7 @@ public class Sender {
 
     public static void main(String[] args) throws Exception {
 
-        IntStream.rangeClosed(1, 1000)
+        IntStream.rangeClosed(1, 10000)
                 .forEach(t -> {
                     try {
                         send();
@@ -32,10 +32,10 @@ public class Sender {
 
         Bean bean = new Bean();
         bean.setDealPassword("a123456");
-        bean.setEntrustPrice(new BigDecimal(ThreadLocalRandom.current().nextInt(1, 11)));
+        bean.setEntrustPrice(new BigDecimal(ThreadLocalRandom.current().nextInt(1, 21)));
         bean.setEntrustCount(new BigDecimal("0.01"));
         bean.setMarketId(26);
-        bean.setType(1);
+        bean.setType(2);
         bean.setEntrustType(0);
 
 
@@ -45,7 +45,7 @@ public class Sender {
                 .url("http://192.168.1.230:9021/transaction/api/v1/user/entrust")
                 .post(body)
                 .addHeader("Content-Type", "application/json")
-                .addHeader("accessToken", "8fd0017f-3b0a-484b-b43a-90a99eb122d0")
+                .addHeader("accessToken", "3c9dc115-ab8b-46a9-aac8-2dce5b672189")
                 .addHeader("cache-control", "no-cache")
                 .addHeader("Postman-Token", "9dea9578-cb58-4fa0-9bcb-9f8e06f2ff27")
                 .build();
