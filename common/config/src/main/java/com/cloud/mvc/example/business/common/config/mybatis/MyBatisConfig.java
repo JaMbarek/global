@@ -1,8 +1,5 @@
 package com.cloud.mvc.example.business.common.config.mybatis;
 
-import com.cloud.mvc.example.business.common.config.mybatis.interceptor.PerformaceInterceptor;
-import com.cloud.mvc.example.business.common.config.mybatis.interceptor.VersionInterceptor;
-import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.slf4j.Logger;
@@ -31,7 +28,6 @@ public class MyBatisConfig  {
     @Bean(name = "sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactoryBean() {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-        bean.setPlugins(new Interceptor[]{new PerformaceInterceptor(), new VersionInterceptor()});
         bean.setDataSource(dataSource);
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();

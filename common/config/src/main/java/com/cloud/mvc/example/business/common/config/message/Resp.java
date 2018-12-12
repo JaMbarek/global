@@ -17,6 +17,16 @@ public final class Resp<T> {
         return resp;
     }
 
+    public static Resp success(){
+        Resp resp = new Resp();
+        resp.code = CommonCodeAndMessage.OK.getCode();
+        resp.message = CommonCodeAndMessage.OK.getMessage();
+        resp.data = null;
+        return resp;
+    }
+
+
+
     public static Resp error(CodeAndMessage message){
         Resp resp = new Resp();
         resp.code = message.getCode();

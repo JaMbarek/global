@@ -9,6 +9,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication(scanBasePackages = "com.cloud.mvc.example.business.**")
 @EnableDiscoveryClient
 @MapperScan("com.cloud.mvc.example.business.system.dao")
+
 public class SystemApplication {
 
     public static void main(String[] args) {
