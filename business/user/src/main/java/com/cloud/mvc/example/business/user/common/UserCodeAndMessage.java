@@ -4,8 +4,9 @@ import com.cloud.mvc.example.business.common.config.message.CodeAndMessage;
 
 public enum  UserCodeAndMessage implements CodeAndMessage {
 
-    VERIFY_CODE_ERROR(60001)
+    VERIFY_CODE_ERROR(60001),
 
+    LOGIN_INFO_NULL(60002)
 
 
     ;

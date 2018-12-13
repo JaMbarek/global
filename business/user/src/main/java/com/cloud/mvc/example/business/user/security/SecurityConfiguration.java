@@ -20,12 +20,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     PasswordEncoderHandler passwordEncoderHandler;
 
+    @Autowired
+    UserDetailsServiceIml userDetailsServiceIml;
+
+    @Autowired
+    UserDetailsPasswordServiceImpl userDetailsPasswordService;
+
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(passwordEncoderHandler);
-        provider.setUserDetailsPasswordService(new UserDetailsPasswordServiceImpl());
-        provider.setUserDetailsService(new UserDetailsServiceIml());
+        provider.setUserDetailsPasswordService(userDetailsPasswordService);
+        provider.setUserDetailsService(userDetailsServiceIml);
         return provider;
     }
 

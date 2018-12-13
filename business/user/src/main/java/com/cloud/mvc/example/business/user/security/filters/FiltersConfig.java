@@ -11,6 +11,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+import java.util.Optional;
+
+import static com.cloud.mvc.example.business.user.common.UserCodeAndMessage.LOGIN_INFO_NULL;
+
 /**
  * 验证用户的登录信息配置类
  */
@@ -27,7 +31,7 @@ public class FiltersConfig {
      * @return
      */
     @Bean
-    @Order(1)
+    @Order(2)
     public UserLoginFilter verifyCodeFilter(){
         return (t, h) -> {
             if(!t.getCode().equals("111111")){
@@ -38,7 +42,7 @@ public class FiltersConfig {
     }
 
     @Bean
-    @Order(0)
+    @Order(1)
     public UserLoginFilter simpleVerifyFilter(){
         return (t, h) -> {
             localValidatorFactoryBean.getValidator()
@@ -49,7 +53,14 @@ public class FiltersConfig {
         };
     }
 
-
+    @Bean
+    @Order(0)
+    public UserLoginFilter nullCheck(){
+        return (t, h) -> {
+            Optional.ofNullable(t)
+                    .orElseThrow(() -> LoginException.instance(Resp.error(LOGIN_INFO_NULL, h).getMessage()));
+        };
+    }
 
 
 }

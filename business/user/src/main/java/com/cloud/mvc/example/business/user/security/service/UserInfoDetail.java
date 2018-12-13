@@ -3,6 +3,7 @@ package com.cloud.mvc.example.business.user.security.service;
 import com.cloud.mvc.example.business.user.security.beans.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,16 +14,13 @@ import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserInfoDetail implements UserDetails {
 
     private Long id;
     private String username;
     private String password;
-    private LocalDateTime createDate;
-    private LocalDateTime loginDate;
     private List<Role> roleList;
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
