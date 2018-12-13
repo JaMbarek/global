@@ -1,4 +1,4 @@
-package com.cloud.mvc.example.bussiness.user;
+package com.cloud.mvc.example.business.user;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -2,6 +2,8 @@ package com.cloud.mvc.example.business.common.config.message;
 
 import lombok.Data;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Data
 public final class Resp<T> {
 
@@ -31,6 +33,20 @@ public final class Resp<T> {
         Resp resp = new Resp();
         resp.code = message.getCode();
         resp.message = message.getMessage();
+        return resp;
+    }
+
+    public static Resp error(CodeAndMessage message, HttpServletRequest request){
+        Resp resp = new Resp();
+        resp.code = message.getCode();
+        resp.message = message.getMessage(request);
+        return resp;
+    }
+
+    public static Resp error(String message){
+        Resp resp = new Resp();
+        resp.code = 500;
+        resp.message = message;
         return resp;
     }
 

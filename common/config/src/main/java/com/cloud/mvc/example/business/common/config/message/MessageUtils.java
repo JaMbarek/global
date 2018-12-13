@@ -2,6 +2,7 @@ package com.cloud.mvc.example.business.common.config.message;
 
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -9,6 +10,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
@@ -17,17 +19,21 @@ public class MessageUtils {
 
 
     static private AcceptHeaderLocaleResolver resolver;
-    static private ReloadableResourceBundleMessageSource source;
+    static private ReloadableResourceBundleMessageSource codeAndMessageSource;
 
-    public MessageUtils(@Autowired ReloadableResourceBundleMessageSource source) {
+
+    public MessageUtils(
+            @Autowired @Qualifier("codeMessageResourceBundle") ReloadableResourceBundleMessageSource source
+
+                        ) {
         MessageUtils.resolver = new AcceptHeaderLocaleResolver();
         MessageUtils.resolver.setDefaultLocale(Locale.CHINA);
-        MessageUtils.source = source;
-
+        MessageUtils.codeAndMessageSource = source;
         MessageUtils.resolver.setSupportedLocales(Lists.newArrayList(Locale.CHINA, Locale.US, Locale.JAPAN));
+    }
 
-
-
+    public static List<Locale> supports(){
+        return resolver.getSupportedLocales();
     }
 
     /**
@@ -39,16 +45,13 @@ public class MessageUtils {
         ServletRequestAttributes  attributes = (ServletRequestAttributes )RequestContextHolder.currentRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         Locale locale = resolver.resolveLocale(request);
+        return codeAndMessageSource.getMessage(code, null, locale);
+    }
 
 
-        ReloadableResourceBundleMessageSource rbms = new ReloadableResourceBundleMessageSource();
-        rbms.setDefaultEncoding("UTF-8");
-        rbms.setBasenames("classpath:messages");
-        Properties p = new Properties();
-        p.setProperty("defaultEncoding", "UTF-8");
-        rbms.setFileEncodings(p);
-
-        return rbms.getMessage(code, null, locale);
+    public static String getMessageByRequest(String code, HttpServletRequest request) {
+        Locale locale = resolver.resolveLocale(request);
+        return codeAndMessageSource.getMessage(code, null, locale);
     }
 
 
