@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 9003
   address: cloud.test.com
 
 spring:
@@ -10,7 +10,7 @@ spring:
     url: jdbc:mysql://cloud.db.com:3306/system?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
     password: root
   application:
-    name: system
+    name: authServer
   redis:
     host: cloud.db.com
     password: admin123
