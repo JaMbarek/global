@@ -7,7 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 /**
-* Created by Mybatis Generator on 2018/12/13
+* Created by Mybatis Generator on 2018/12/14
 */
 public interface UserAccountMapper extends BaseMapper<UserAccount, UserAccountExample> {
 }

@@ -1,5 +1,8 @@
 package com.cloud.mvc.example.business.user.security.handlers;
 
+import com.cloud.mvc.example.business.common.config.message.Resp;
+import com.cloud.mvc.example.business.common.utils.ResponseUtils;
+import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;
@@ -11,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.cloud.mvc.example.business.user.common.UserCodeAndMessage.USER_ACCESS_DENY;
+
 /**
  * 已登录用户，权限不够
  */
@@ -21,8 +26,7 @@ public class UserAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
-        logger.warn("权限不够");
-        response.getWriter().write("deny");
-
+        logger.debug("当前用户权限不够");
+        ResponseUtils.write(response, new Gson().toJson(Resp.error(USER_ACCESS_DENY, request)));
     }
 }

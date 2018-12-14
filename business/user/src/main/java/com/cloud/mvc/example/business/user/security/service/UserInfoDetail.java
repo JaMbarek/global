@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,10 +21,18 @@ public class UserInfoDetail implements UserDetails {
     private String password;
     private List<Role> roleList;
 
+    private Integer status;
+    private Integer lock;
+
+    private List<GrantedAuthority> grantedAuthorities;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roleList.stream().map(t -> (GrantedAuthority) () -> t.getName())
-                .collect(Collectors.toList());
+        return grantedAuthorities;
+    }
+
+    public void setGrantedAuthorities(List<GrantedAuthority> grantedAuthorities) {
+        this.grantedAuthorities = grantedAuthorities;
     }
 
     @Override
@@ -45,7 +52,7 @@ public class UserInfoDetail implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return this.lock == 1;
     }
 
     @Override
@@ -55,6 +62,14 @@ public class UserInfoDetail implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.status == 1;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public void setLock(Integer lock) {
+        this.lock = lock;
     }
 }

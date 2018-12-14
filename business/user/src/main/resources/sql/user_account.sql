@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50724
 File Encoding         : 65001
 
-Date: 2018-12-13 19:03:37
+Date: 2018-12-14 10:31:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,6 +27,12 @@ CREATE TABLE `user_account` (
   `deal_password` varchar(255) DEFAULT NULL COMMENT '交易密码',
   `create_date` datetime DEFAULT NULL,
   `modify_date` datetime DEFAULT NULL,
-  `status` int(2) DEFAULT NULL,
+  `lock` int(2) DEFAULT NULL COMMENT '是否锁定0锁定1正常',
+  `status` int(2) DEFAULT NULL COMMENT '是否有效0无效1有效',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户账户表';
+
+-- ----------------------------
+-- Records of user_account
+-- ----------------------------
+INSERT INTO `user_account` VALUES ('1', '13120971538', null, '123456', null, null, null, '1', '1');

@@ -29,6 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setHideUserNotFoundExceptions(false);//当用户信息找不到时是否通知用户，默认不通知，防止暴力破解
         provider.setPasswordEncoder(passwordEncoderHandler);
         provider.setUserDetailsPasswordService(userDetailsPasswordService);
         provider.setUserDetailsService(userDetailsServiceIml);

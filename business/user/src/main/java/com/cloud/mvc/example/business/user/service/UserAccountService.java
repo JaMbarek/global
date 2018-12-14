@@ -4,7 +4,9 @@ import com.cloud.mvc.example.business.user.dao.UserAccountMapper;
 import com.cloud.mvc.example.business.user.entity.UserAccount;
 import com.cloud.mvc.example.business.user.entity.UserAccountExample;
 import com.cloud.mvc.example.business.user.security.service.UserInfoDetail;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +24,8 @@ public class UserAccountService {
         detail.setUsername(t.getPhone());
         detail.setPassword(t.getLoginPassword());
         detail.setId(t.getId());
+        detail.setStatus(t.getStatus());
+        detail.setLock(t.getLock());
         return detail;
     };
 
@@ -37,7 +41,9 @@ public class UserAccountService {
 
     }
 
-
+    public List<GrantedAuthority> collectGrantedAuthorities(Long userAccountId){
+        return Lists.newArrayList();
+    }
 
 
 

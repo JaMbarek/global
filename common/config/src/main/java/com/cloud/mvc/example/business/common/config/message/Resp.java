@@ -19,6 +19,15 @@ public final class Resp<T> {
         return resp;
     }
 
+
+    public static Resp success(Object data, HttpServletRequest request){
+        Resp resp = new Resp();
+        resp.code = CommonCodeAndMessage.OK.getCode();
+        resp.message = CommonCodeAndMessage.OK.getMessage(request);
+        resp.data = data;
+        return resp;
+    }
+
     public static Resp success(){
         Resp resp = new Resp();
         resp.code = CommonCodeAndMessage.OK.getCode();

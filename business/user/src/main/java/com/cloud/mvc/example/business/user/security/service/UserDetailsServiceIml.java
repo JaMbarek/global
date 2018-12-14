@@ -23,8 +23,9 @@ public class UserDetailsServiceIml implements UserDetailsService  {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.debug("尝试获取用户信息，username={}", username);
-        UserDetails details = service.getUserInfoDetailByUserName(username);
+        UserInfoDetail details = service.getUserInfoDetailByUserName(username);
         Optional.ofNullable(details).orElseThrow(() -> new UsernameNotFoundException("找不到用户信息"));
+        details.setGrantedAuthorities(service.collectGrantedAuthorities(details.getId()));
         return details;
     }
 

@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
-* Created by Mybatis Generator on 2018/12/13
+* Created by Mybatis Generator on 2018/12/14
 */
 @Data
 @Builder
@@ -25,6 +25,8 @@ public class UserAccount extends BaseEntity {
 
     private String dealPassword;
 
+    private Integer lock;
+
     /**
      * 这是Mybatis Generator拓展插件生成的枚举(请勿删除).
      * This class corresponds to the database table user_account
@@ -39,6 +41,7 @@ public class UserAccount extends BaseEntity {
         dealPassword("deal_password"),
         createDate("create_date"),
         modifyDate("modify_date"),
+        lock("lock"),
         status("status");
 
         private final String column;

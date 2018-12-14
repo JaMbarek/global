@@ -606,6 +606,66 @@ public class UserAccountExample {
             return (Criteria) this;
         }
 
+        public Criteria andLockIsNull() {
+            addCriterion("`lock` is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockIsNotNull() {
+            addCriterion("`lock` is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockEqualTo(Integer value) {
+            addCriterion("`lock` =", value, "lock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockNotEqualTo(Integer value) {
+            addCriterion("`lock` <>", value, "lock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockGreaterThan(Integer value) {
+            addCriterion("`lock` >", value, "lock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockGreaterThanOrEqualTo(Integer value) {
+            addCriterion("`lock` >=", value, "lock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockLessThan(Integer value) {
+            addCriterion("`lock` <", value, "lock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockLessThanOrEqualTo(Integer value) {
+            addCriterion("`lock` <=", value, "lock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockIn(List<Integer> values) {
+            addCriterion("`lock` in", values, "lock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockNotIn(List<Integer> values) {
+            addCriterion("`lock` not in", values, "lock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockBetween(Integer value1, Integer value2) {
+            addCriterion("`lock` between", value1, value2, "lock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockNotBetween(Integer value1, Integer value2) {
+            addCriterion("`lock` not between", value1, value2, "lock");
+            return (Criteria) this;
+        }
+
         public Criteria andStatusIsNull() {
             addCriterion("`status` is null");
             return (Criteria) this;

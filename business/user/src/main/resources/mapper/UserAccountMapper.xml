@@ -9,6 +9,7 @@
     <result column="deal_password" jdbcType="VARCHAR" property="dealPassword" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="lock" jdbcType="INTEGER" property="lock" />
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -70,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, phone, email, login_password, deal_password, create_date, modify_date, `status`
+    id, phone, email, login_password, deal_password, create_date, modify_date, `lock`, 
+    `status`
   </sql>
   <select id="selectByExample" parameterType="com.cloud.mvc.example.business.user.entity.UserAccountExample" resultMap="BaseResultMap">
     select
@@ -111,10 +113,10 @@
     </selectKey>
     insert into user_account (phone, email, login_password, 
       deal_password, create_date, modify_date, 
-      `status`)
+      `lock`, `status`)
     values (#{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, 
       #{dealPassword,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=INTEGER})
+      #{lock,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.cloud.mvc.example.business.user.entity.UserAccount">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -140,6 +142,9 @@
       <if test="modifyDate != null">
         modify_date,
       </if>
+      <if test="lock != null">
+        `lock`,
+      </if>
       <if test="status != null">
         `status`,
       </if>
@@ -162,6 +167,9 @@
       </if>
       <if test="modifyDate != null">
         #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lock != null">
+        #{lock,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -198,6 +206,9 @@
       <if test="record.modifyDate != null">
         modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.lock != null">
+        `lock` = #{record.lock,jdbcType=INTEGER},
+      </if>
       <if test="record.status != null">
         `status` = #{record.status,jdbcType=INTEGER},
       </if>
@@ -215,6 +226,7 @@
       deal_password = #{record.dealPassword,jdbcType=VARCHAR},
       create_date = #{record.createDate,jdbcType=TIMESTAMP},
       modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      `lock` = #{record.lock,jdbcType=INTEGER},
       `status` = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -241,6 +253,9 @@
       <if test="modifyDate != null">
         modify_date = #{modifyDate,jdbcType=TIMESTAMP},
       </if>
+      <if test="lock != null">
+        `lock` = #{lock,jdbcType=INTEGER},
+      </if>
       <if test="status != null">
         `status` = #{status,jdbcType=INTEGER},
       </if>
@@ -255,6 +270,7 @@
       deal_password = #{dealPassword,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      `lock` = #{lock,jdbcType=INTEGER},
       `status` = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -263,10 +279,10 @@
       WARNING - @mbg.generated
       这个节点为代码生成工具生成，请不要修改!
     -->
-    insert into user_account (phone, email, login_password, deal_password, create_date, modify_date, `status`)
+    insert into user_account (phone, email, login_password, deal_password, create_date, modify_date, `lock`, `status`)
     values
     <foreach collection="list" item="item" separator=",">
-       (#{item.phone,jdbcType=VARCHAR}, #{item.email,jdbcType=VARCHAR}, #{item.loginPassword,jdbcType=VARCHAR}, #{item.dealPassword,jdbcType=VARCHAR}, #{item.createDate,jdbcType=TIMESTAMP}, #{item.modifyDate,jdbcType=TIMESTAMP}, #{item.status,jdbcType=INTEGER})
+       (#{item.phone,jdbcType=VARCHAR}, #{item.email,jdbcType=VARCHAR}, #{item.loginPassword,jdbcType=VARCHAR}, #{item.dealPassword,jdbcType=VARCHAR}, #{item.createDate,jdbcType=TIMESTAMP}, #{item.modifyDate,jdbcType=TIMESTAMP}, #{item.lock,jdbcType=INTEGER}, #{item.status,jdbcType=INTEGER})
     </foreach>
   </insert>
   <insert id="batchInsertSelective" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
@@ -301,6 +317,9 @@
         <if test="'modify_date' == column.value">
           #{item.modifyDate,jdbcType=TIMESTAMP}
         </if>
+        <if test="'lock' == column.value">
+          #{item.lock,jdbcType=INTEGER}
+        </if>
         <if test="'status' == column.value">
           #{item.status,jdbcType=INTEGER}
         </if>
@@ -330,11 +349,11 @@
       这个节点为代码生成工具生成，请不要修改!
     -->
     insert into user_account
-     (id, phone, email, login_password, deal_password, create_date, modify_date, `status`) 
+     (id, phone, email, login_password, deal_password, create_date, modify_date, `lock`, `status`) 
     values
-     (#{id,jdbcType=BIGINT}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, #{dealPassword,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}) 
+     (#{id,jdbcType=BIGINT}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, #{dealPassword,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, #{lock,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}) 
     on duplicate key update 
-    id = #{id,jdbcType=BIGINT}, phone = #{phone,jdbcType=VARCHAR}, email = #{email,jdbcType=VARCHAR}, login_password = #{loginPassword,jdbcType=VARCHAR}, deal_password = #{dealPassword,jdbcType=VARCHAR}, create_date = #{createDate,jdbcType=TIMESTAMP}, modify_date = #{modifyDate,jdbcType=TIMESTAMP}, `status` = #{status,jdbcType=INTEGER}
+    id = #{id,jdbcType=BIGINT}, phone = #{phone,jdbcType=VARCHAR}, email = #{email,jdbcType=VARCHAR}, login_password = #{loginPassword,jdbcType=VARCHAR}, deal_password = #{dealPassword,jdbcType=VARCHAR}, create_date = #{createDate,jdbcType=TIMESTAMP}, modify_date = #{modifyDate,jdbcType=TIMESTAMP}, `lock` = #{lock,jdbcType=INTEGER}, `status` = #{status,jdbcType=INTEGER}
   </insert>
   <insert id="upsertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.mvc.example.business.user.entity.UserAccount" useGeneratedKeys="true">
     <!--
@@ -364,6 +383,9 @@
       <if test="modifyDate != null">
         modify_date,
       </if>
+      <if test="lock != null">
+        `lock`,
+      </if>
       <if test="status != null">
         `status`,
       </if>
@@ -391,6 +413,9 @@
       <if test="modifyDate != null">
         #{modifyDate,jdbcType=TIMESTAMP},
       </if>
+      <if test="lock != null">
+        #{lock,jdbcType=INTEGER},
+      </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
       </if>
@@ -417,6 +442,9 @@
       </if>
       <if test="modifyDate != null">
         modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lock != null">
+        `lock` = #{lock,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         `status` = #{status,jdbcType=INTEGER},
