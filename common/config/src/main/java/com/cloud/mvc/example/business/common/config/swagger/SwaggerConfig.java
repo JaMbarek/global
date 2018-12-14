@@ -50,6 +50,10 @@ public class SwaggerConfig {
         ParameterBuilder languagePar = new ParameterBuilder();
         languagePar.name("Accept-Language").description("语言").modelRef(new ModelRef("string")).parameterType("header").required(false).
                 defaultValue("zh-CN,zh").build();
+        //Authorization
+        languagePar.name("Authorization").description("token 以Bearer (<-这里存在空格)开头").modelRef(new ModelRef("string")).parameterType("header")
+                .required(false). defaultValue("").build();
+
         ParameterBuilder pagePar = new ParameterBuilder();
         pagePar.name("page").description("当前页(需分页的接口使用)").modelRef(new ModelRef("string")).parameterType("header").required(false)
                 .defaultValue("1").build();

@@ -39,6 +39,10 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
         if(!Strings.isNullOrEmpty(tokenName) && tokenName.startsWith("Bearer ")){
             String token = tokenName.substring(7);
             String username = jwtTokenUtil.getUserName(token);
+
+            //TODO 控制同时在线客户端数量
+
+
             if(!Strings.isNullOrEmpty(username) && SecurityContextHolder.getContext().getAuthentication() == null){
                 //重新设置认证信息
                 UserDetails details = serviceIml.loadUserByUsername(username);
