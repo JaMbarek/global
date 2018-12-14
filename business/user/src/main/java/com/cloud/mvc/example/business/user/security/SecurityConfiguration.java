@@ -1,6 +1,7 @@
 package com.cloud.mvc.example.business.user.security;
 
 import com.cloud.mvc.example.business.user.security.filters.JsonUsernamePasswordAuthenticationFilter;
+import com.cloud.mvc.example.business.user.security.filters.JwtAuthorizationTokenFilter;
 import com.cloud.mvc.example.business.user.security.handlers.*;
 import com.cloud.mvc.example.business.user.security.service.UserDetailsPasswordServiceImpl;
 import com.cloud.mvc.example.business.user.security.service.UserDetailsServiceIml;
@@ -12,10 +13,15 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+
+    private static final String username = "username";
+    private static final String password = "password";
 
     @Autowired
     PasswordEncoderHandler passwordEncoderHandler;
@@ -57,6 +63,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     UserAuthenticationEntryPoint userAuthenticationEntryPoint;
 
+    @Autowired
+    JwtAuthorizationTokenFilter jwtAuthorizationTokenFilter;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -65,12 +74,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .accessDeniedHandler(userAccessDeniedHandler).and()
 
                 .formLogin()
+                .usernameParameter(username)
+                .passwordParameter(password)
                 .successHandler(loginSuccessHandler)
                 .failureHandler(loginFailedHandler)
                 .permitAll()
                 .and()
 
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/open").permitAll()
                 .antMatchers("*.js").permitAll()
@@ -78,12 +89,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll();
 
         http.addFilterAt(jsonUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtAuthorizationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         http
                 .headers()
                 .frameOptions().sameOrigin()  // required to set for H2 else H2 Console will be blank.
                 .cacheControl();
-
     }
 
     @Bean

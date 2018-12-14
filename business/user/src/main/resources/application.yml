@@ -31,3 +31,8 @@ eureka:
       defaultZone: http://admin:admin123@cloud.test.com:10000/eureka/
     fetch-registry: true
     registry-fetch-interval-seconds: 20
+
+jwt:
+  privateSecret: 123456
+  expireTime: 20000
+  header: Authorization

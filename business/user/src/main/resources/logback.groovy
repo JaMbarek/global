@@ -48,6 +48,7 @@ logger("com.zaxxer.hikari", ERROR)
 logger("org.springframework.data", ERROR)
 logger("org.springframework.boot.test", ERROR)
 logger("reactor", ERROR)
+logger("ma.glasnost.orika", ERROR)
 
 logger("com.cloud.mvc.example.business.user", DEBUG)
 logger("java.sql.Connection", DEBUG)

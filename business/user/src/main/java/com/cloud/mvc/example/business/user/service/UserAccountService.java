@@ -21,7 +21,8 @@ public class UserAccountService {
 
     private Function<UserAccount, UserInfoDetail> transater = t -> {
         UserInfoDetail detail = new UserInfoDetail();
-        detail.setUsername(t.getPhone());
+        detail.setPhone(t.getPhone());
+        detail.setEmail(t.getEmail());
         detail.setPassword(t.getLoginPassword());
         detail.setId(t.getId());
         detail.setStatus(t.getStatus());

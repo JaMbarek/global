@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
@@ -17,7 +16,8 @@ import java.util.stream.Collectors;
 public class UserInfoDetail implements UserDetails {
 
     private Long id;
-    private String username;
+    private String phone;
+    private String email;
     private String password;
     private List<Role> roleList;
 
@@ -42,7 +42,7 @@ public class UserInfoDetail implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.username;
+        return this.phone;
     }
 
     @Override
@@ -71,5 +71,21 @@ public class UserInfoDetail implements UserDetails {
 
     public void setLock(Integer lock) {
         this.lock = lock;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
