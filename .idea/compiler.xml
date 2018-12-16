@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="admin-server" />
         <module name="AdminServer" />
+        <module name="auth" />
         <module name="auth-client" />
         <module name="authclient" />
         <module name="AuthServer" />

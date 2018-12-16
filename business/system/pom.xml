@@ -17,5 +17,12 @@
     <name>system</name>
     <description>Demo project for Spring Boot</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.cloud.mvc.example</groupId>
+            <artifactId>config</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
