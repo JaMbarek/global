@@ -7,7 +7,7 @@
 ## 链路追踪：美团CAT
 ## 熔断器：hystrix
 ## 熔断可视化：hystrix-ui
-## 数据库：Mysql+redis
+## 数据库：Mysql+redis+rabbitmq
 ## 部署：docker
 ## 分布式定时任务：elastic-job
 ## 分布式事务：transaction 自实现
