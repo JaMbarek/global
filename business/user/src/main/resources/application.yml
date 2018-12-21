@@ -1,34 +1,28 @@
 server:
   port: 9001
-
+  address: cloud.test.com
 spring:
   application:
     name: user
-  datasource:
-    url: jdbc:mysql://cloud.db.com:3306/user?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
-    username: root
-    password: root
-  redis:
-    host: cloud.db.com
-    password: admin123
-    port: 6379
-    database: 0
-    timeout: 3000
-    lettuce:
-      pool:
-        max-idle: 8
-        min-idle: 0
-        max-wait: -1
-        max-active: 8
+  profiles:
+    active: dev
 
+---
+spring:
+  application:
+    name: user
+  profiles: dev
 
-eureka:
-  instance:
-    prefer-ip-address: true
-    ip-address: 192.168.1.146
-  client:
-    service-url:
-      defaultZone: http://admin:admin123@cloud.test.com:10000/eureka/
-    fetch-registry: true
-    registry-fetch-interval-seconds: 20
+---
+spring:
+  application:
+    name: user
+  profiles: test
+
+---
+spring:
+  application:
+    name: user
+  profiles: prod
+
 

@@ -1,27 +1,28 @@
 server:
   port: 9000
   address: cloud.test.com
-
 spring:
-  profiles:
-    active: dev
-  datasource:
-    username: root
-    url: jdbc:mysql://cloud.db.com:3306/system?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
-    password: root
   application:
     name: system
-  redis:
-    host: cloud.db.com
-    password: admin123
-    port: 6379
-    database: 0
-    timeout: 3000
-    lettuce:
-      pool:
-        max-idle: 8
-        min-idle: 0
-        max-wait: -1
-        max-active: 8
+  profiles:
+    active: dev
+
 logging:
   config: classpath:logback.groovy
+
+---
+spring:
+  application:
+    name: system
+  profiles: dev
+
+---
+spring:
+  application:
+    name: system
+  profiles: test
+---
+spring:
+  application:
+    name: system
+  profiles: prod
