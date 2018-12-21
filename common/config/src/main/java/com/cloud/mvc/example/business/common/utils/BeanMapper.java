@@ -2,6 +2,7 @@ package com.cloud.mvc.example.business.common.utils;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 

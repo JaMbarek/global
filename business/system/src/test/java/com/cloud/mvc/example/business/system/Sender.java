@@ -78,10 +78,10 @@ public class Sender {
         bean.setDealPassword("dc483e80a7a0bd9ef71d8cf973673924");
         bean.setEntrustPrice(price);
         bean.setEntrustCount(new BigDecimal("0." + RandomStringUtils.randomNumeric(4)));
-        bean.setMarketId(26);
+        bean.setMarketId(59);
         bean.setType(type);
         bean.setEntrustType(0);
-        // test:  50831bf5-8e1b-4502-b744-f2e5cdb466f4
+        // test:  a2007b49-cdc9-427b-a4d3-46d8ea100e24
         // dev:   90e6424f-36a4-4312-902f-11fd2a47ef5d
 
         MediaType mediaType = MediaType.parse("application/json");
@@ -90,7 +90,7 @@ public class Sender {
                 .url("http://192.168.1.230:9021/transaction/api/v1/user/entrust")
                 .post(body)
                 .addHeader("Content-Type", "application/json")
-                .addHeader("accessToken", "50831bf5-8e1b-4502-b744-f2e5cdb466f4")
+                .addHeader("accessToken", "a2007b49-cdc9-427b-a4d3-46d8ea100e24")
                 .addHeader("cache-control", "no-cache")
                 .addHeader("Postman-Token", "9dea9578-cb58-4fa0-9bcb-9f8e06f2ff27")
                 .build();

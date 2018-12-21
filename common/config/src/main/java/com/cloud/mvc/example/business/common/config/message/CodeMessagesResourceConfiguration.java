@@ -24,7 +24,7 @@ public class CodeMessagesResourceConfiguration {
     public ReloadableResourceBundleMessageSource codeMessageResourceBundle() {
         ReloadableResourceBundleMessageSource rbms = new ReloadableResourceBundleMessageSource();
         rbms.setDefaultEncoding("UTF-8");
-        rbms.setBasenames("classpath:messages/Messages", "classpath:messages/" + serviceName + "Messages");
+        rbms.setBasenames("classpath:messages/messages", "classpath:messages/" + serviceName + "Messages");
         Properties p = new Properties();
         p.setProperty("defaultEncoding", "UTF-8");
         rbms.setFileEncodings(p);

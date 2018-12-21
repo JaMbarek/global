@@ -24,7 +24,6 @@ public class MessageUtils {
 
     public MessageUtils(
             @Autowired @Qualifier("codeMessageResourceBundle") ReloadableResourceBundleMessageSource source
-
                         ) {
         MessageUtils.resolver = new AcceptHeaderLocaleResolver();
         MessageUtils.resolver.setDefaultLocale(Locale.CHINA);
