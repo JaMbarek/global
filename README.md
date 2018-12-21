@@ -12,4 +12,5 @@
 ## 分布式定时任务：elastic-job
 ## 分布式事务：transaction 自实现
 ## 长连接：websocket和long polling
+## 代码生成：mybatis-generator并且进行拓展
 ## 服务基础：springboot+mybatis
