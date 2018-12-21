@@ -12,4 +12,4 @@
 ## 分布式定时任务：elastic-job
 ## 分布式事务：transaction 自实现
 ## 长连接：websocket和long polling
-## 服务基础：
+## 服务基础：springboot+mybatis
