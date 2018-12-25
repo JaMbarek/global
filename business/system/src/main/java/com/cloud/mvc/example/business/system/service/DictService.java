@@ -1,6 +1,7 @@
 package com.cloud.mvc.example.business.system.service;
 
 import com.cloud.mvc.example.business.common.supers.BaseService;
+import com.cloud.mvc.example.business.domain.dto.system.DictDto;
 import com.cloud.mvc.example.business.system.entity.DictExample;
 import com.cloud.mvc.example.business.system.entity.Dict;
 
@@ -9,5 +10,8 @@ import com.cloud.mvc.example.business.system.entity.Dict;
 *
 */
 public interface DictService extends BaseService<Dict, DictExample> {
+
+
+    DictDto findDictByKey(String key);
 
 }

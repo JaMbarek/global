@@ -1,11 +1,10 @@
 package com.cloud.mvc.example.business.common.supers;
 
-import com.cloud.mvc.example.business.common.utils.BeanMapper;
+import com.cloud.mvc.example.utils.mapper.BeanMapper;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.function.Function;
 
 @Data
 @SuppressWarnings("all")

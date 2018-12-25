@@ -1,12 +1,10 @@
-package com.cloud.mvc.example.business.system.dto;
+package com.cloud.mvc.example.business.domain.dto.system;
 
+import com.cloud.mvc.example.business.domain.dto.BaseDto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.NotNull;
-import com.cloud.mvc.example.business.common.supers.BaseDto;
-import com.cloud.mvc.example.business.common.supers.BaseEntity;
-import java.time.LocalDateTime;
 
 /**
 * Created by Administrator on 2018-12-13 17:59:45
@@ -14,7 +12,7 @@ import java.time.LocalDateTime;
 */
 @Data
 @ApiModel
-public class DictDto extends BaseDto{
+public class DictDto extends BaseDto {
 
     interface Create{}
     interface Update{}

@@ -1,6 +1,7 @@
 package com.cloud.mvc.example.business.common.supers;
 
-import com.cloud.mvc.example.business.common.utils.BeanMapper;
+
+import com.cloud.mvc.example.utils.mapper.BeanMapper;
 
 import java.util.Optional;
 

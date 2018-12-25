@@ -1,7 +1,7 @@
 package com.cloud.mvc.example.common.service.user;
 
 import com.cloud.mvc.example.business.domain.constants.UrlConstants;
-import com.cloud.mvc.example.business.domain.dto.UserAccountDto;
+import com.cloud.mvc.example.business.domain.dto.user.UserAccountDto;
 import com.cloud.mvc.example.business.domain.enums.Role;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

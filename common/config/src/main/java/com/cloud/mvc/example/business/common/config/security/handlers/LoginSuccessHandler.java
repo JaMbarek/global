@@ -2,10 +2,10 @@ package com.cloud.mvc.example.business.common.config.security.handlers;
 
 import com.cloud.mvc.example.business.common.config.message.Resp;
 import com.cloud.mvc.example.business.common.config.security.beans.UserAccountDetail;
-import com.cloud.mvc.example.business.common.utils.BeanMapper;
 import com.cloud.mvc.example.business.common.utils.JwtTokenUtil;
 import com.cloud.mvc.example.business.common.utils.ResponseUtils;
 import com.cloud.mvc.example.business.domain.vo.UserLoginVo;
+import com.cloud.mvc.example.utils.mapper.BeanMapper;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

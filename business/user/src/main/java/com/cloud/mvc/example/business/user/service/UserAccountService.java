@@ -1,9 +1,9 @@
 package com.cloud.mvc.example.business.user.service;
 
-import com.cloud.mvc.example.business.common.utils.BeanMapper;
-import com.cloud.mvc.example.business.domain.dto.UserAccountDto;
+import com.cloud.mvc.example.business.domain.dto.user.UserAccountDto;
 import com.cloud.mvc.example.business.user.dao.UserAccountMapper;
 import com.cloud.mvc.example.business.user.entity.UserAccountExample;
+import com.cloud.mvc.example.utils.mapper.BeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

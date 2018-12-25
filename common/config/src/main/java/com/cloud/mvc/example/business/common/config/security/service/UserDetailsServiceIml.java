@@ -1,8 +1,7 @@
 package com.cloud.mvc.example.business.common.config.security.service;
 
 import com.cloud.mvc.example.business.common.config.security.beans.UserAccountDetail;
-import com.cloud.mvc.example.business.domain.dto.RoleDto;
-import com.cloud.mvc.example.business.domain.dto.UserAccountDto;
+import com.cloud.mvc.example.business.domain.dto.user.UserAccountDto;
 import com.cloud.mvc.example.business.domain.enums.Role;
 import com.cloud.mvc.example.common.service.user.IUserAccountService;
 import org.slf4j.Logger;

@@ -1,6 +1,6 @@
 package com.cloud.mvc.example.business.user.controller;
 
-import com.cloud.mvc.example.business.domain.dto.UserAccountDto;
+import com.cloud.mvc.example.business.domain.dto.user.UserAccountDto;
 import com.cloud.mvc.example.business.domain.enums.Role;
 import com.cloud.mvc.example.business.user.service.UserAccountService;
 import com.cloud.mvc.example.common.service.user.IUserAccountService;

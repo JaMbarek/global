@@ -1,16 +1,19 @@
 package com.cloud.mvc.example.business.user;
 
-import org.mybatis.spring.annotation.MapperScan;
+import com.cloud.mvc.example.business.common.config.feign.FeignScanConfiguration;
+import com.cloud.mvc.example.business.common.config.mybatis.MybatisScanConfiguration;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Import;
 
-@SpringBootApplication(scanBasePackages = "com.cloud.mvc.example.business.**")
+@SpringBootApplication(scanBasePackages = {"com.cloud.mvc.example.business.**", "com.cloud.mvc.example.common.service.**"})
 @EnableDiscoveryClient
-@MapperScan("com.cloud.mvc.example.business.user.dao")
-@EnableFeignClients("com.cloud.mvc.example.common.service.**")
+@Import({
+        FeignScanConfiguration.class,
+        MybatisScanConfiguration.class,
+})
 public class UserApplication {
 
     public static void main(String[] args) {

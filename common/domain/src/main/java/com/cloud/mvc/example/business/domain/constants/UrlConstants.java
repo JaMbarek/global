@@ -9,7 +9,7 @@ public interface UrlConstants {
     }
 
     interface SystemUrlConstants {
-        String SYSTEM_DICT_URL = "/dict";
+        String SYSTEM_DICT_URL = "/system/dict";
     }
 
 
