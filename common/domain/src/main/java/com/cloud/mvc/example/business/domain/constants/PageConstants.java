@@ -1,4 +1,4 @@
-package com.cloud.mvc.example.business.common.constants;
+package com.cloud.mvc.example.business.domain.constants;
 
 public interface PageConstants {
 

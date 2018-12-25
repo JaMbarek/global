@@ -6,7 +6,6 @@ spring:
     name: user
   profiles:
     active: dev
-
 ---
 spring:
   application:

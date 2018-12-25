@@ -1,7 +1,8 @@
 package com.cloud.mvc.example.common.service.user;
 
-import org.springframework.cloud.openfeign.FeignClient;
+import com.cloud.mvc.example.common.service.common.UserFeignClient;
 
-@FeignClient(value = "user", path = "/account")
+
+@UserFeignClient(path = UserAccountServiceClient.path)
 public interface UserAccountServiceClient extends IUserAccountService {
 }

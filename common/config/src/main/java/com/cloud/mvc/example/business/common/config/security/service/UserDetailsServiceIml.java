@@ -3,6 +3,7 @@ package com.cloud.mvc.example.business.common.config.security.service;
 import com.cloud.mvc.example.business.common.config.security.beans.UserAccountDetail;
 import com.cloud.mvc.example.business.domain.dto.RoleDto;
 import com.cloud.mvc.example.business.domain.dto.UserAccountDto;
+import com.cloud.mvc.example.business.domain.enums.Role;
 import com.cloud.mvc.example.common.service.user.IUserAccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,8 +42,8 @@ public class UserDetailsServiceIml implements UserDetailsService  {
         detail.setPassword(dto.getLoginPassword());
 
 
-        List<RoleDto> roleDto = service.collectGrantedAuthorities(dto.getId());
-        List<GrantedAuthority> collect = roleDto.stream().map(t -> (GrantedAuthority) () -> "user").collect(Collectors.toList());
+        List<Role> roleDto = service.collectGrantedAuthorities(dto.getId());
+        List<GrantedAuthority> collect = roleDto.stream().map(t -> (GrantedAuthority) () -> t.getName()).collect(Collectors.toList());
         detail.setGrantedAuthorities(collect);
 
         return detail;

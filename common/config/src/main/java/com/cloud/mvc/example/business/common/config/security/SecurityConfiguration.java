@@ -5,6 +5,8 @@ import com.cloud.mvc.example.business.common.config.security.filters.JwtAuthoriz
 import com.cloud.mvc.example.business.common.config.security.handlers.*;
 import com.cloud.mvc.example.business.common.config.security.service.UserDetailsServiceIml;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -13,11 +15,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    SecurityProperties properties;
 
     private static final String phone = "phone";
     private static final String password = "password";
@@ -30,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
     @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider(){
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setHideUserNotFoundExceptions(false);//当用户信息找不到时是否通知用户，默认不通知，防止暴力破解
         provider.setPasswordEncoder(passwordEncoderHandler);
@@ -41,10 +46,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public JsonUsernamePasswordAuthenticationFilter jsonUsernamePasswordAuthenticationFilter() throws Exception {
-        JsonUsernamePasswordAuthenticationFilter  filter = new JsonUsernamePasswordAuthenticationFilter();
+        JsonUsernamePasswordAuthenticationFilter filter = new JsonUsernamePasswordAuthenticationFilter();
         filter.setAuthenticationManager(authenticationManager());
         filter.setAuthenticationSuccessHandler(loginSuccessHandler);
         filter.setAuthenticationFailureHandler(loginFailedHandler);
+
         return filter;
     }
 
@@ -85,8 +91,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/open").permitAll()
                 .antMatchers("*.js").permitAll()
-                .antMatchers("/user/**").hasRole("USER")
-                .anyRequest().permitAll();
+                .antMatchers("/user/**").access("hasAnyRole('user', 'admin')")
+                .anyRequest().permitAll()
+        ;
 
         http.addFilterAt(jsonUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(jwtAuthorizationTokenFilter, UsernamePasswordAuthenticationFilter.class);
@@ -95,16 +102,36 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .headers()
                 .frameOptions().sameOrigin()  // required to set for H2 else H2 Console will be blank.
                 .cacheControl();
+        http.httpBasic();
     }
 
     @Bean
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
+
         return super.authenticationManager();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        super.configure(auth);
+
+        String[] roles = new String[properties.getUser().getRoles().size()];
+        Object[] roleObjects = properties.getUser().getRoles().stream()
+                .map(t -> t.trim())
+                .toArray();
+
+        for (int i = 0; i < roleObjects.length; i++) {
+            roles[i] = roleObjects[i].toString();
+        }
+
+
+        auth.inMemoryAuthentication()
+                .withUser(
+                        User.withUsername(properties.getUser().getName()).password(properties.getUser().getPassword()).roles(roles).build()
+                );
+        auth.userDetailsService(userDetailsServiceIml);
+//        super.configure(auth);
     }
+
+
 }

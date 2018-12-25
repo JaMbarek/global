@@ -1,6 +1,6 @@
 package com.cloud.mvc.example.business.common.interceptor;
 
-import com.cloud.mvc.example.business.common.constants.PageConstants;
+import com.cloud.mvc.example.business.domain.constants.PageConstants;
 import com.cloud.mvc.example.business.common.request.PageHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
 package com.cloud.mvc.example.business.user.controller;
 
-import com.cloud.mvc.example.business.domain.dto.RoleDto;
 import com.cloud.mvc.example.business.domain.dto.UserAccountDto;
+import com.cloud.mvc.example.business.domain.enums.Role;
 import com.cloud.mvc.example.business.user.service.UserAccountService;
 import com.cloud.mvc.example.common.service.user.IUserAccountService;
 import com.google.common.collect.Lists;
@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping(UserAccountController.path)
 public class UserAccountController implements IUserAccountService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserAccountController.class);
-
 
     @Autowired
     UserAccountService service;
@@ -36,8 +35,8 @@ public class UserAccountController implements IUserAccountService {
     }
 
     @Override
-    public List<RoleDto> collectGrantedAuthorities(Long id) {
+    public List<Role> collectGrantedAuthorities(Long id) {
         logger.debug("user服务查询用户的权限信息。id={}", id);
-        return Lists.newArrayList();
+        return Lists.newArrayList(Role.USER);
     }
 }

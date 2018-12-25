@@ -1,4 +1,4 @@
-package com.cloud.mvc.example.business.common.constants;
+package com.cloud.mvc.example.business.domain.constants;
 
 import java.util.regex.Pattern;
 
