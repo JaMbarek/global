@@ -1,12 +1,11 @@
 package com.cloud.mvc.example.business.system.service.impl;
 
-import com.cloud.mvc.example.business.domain.dto.system.DictDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.cloud.mvc.example.business.common.supers.AbstractBaseService;
-import com.cloud.mvc.example.business.system.service.DictService;
-import com.cloud.mvc.example.business.system.entity.DictExample;
+import com.cloud.mvc.example.business.domain.dto.system.DictDto;
 import com.cloud.mvc.example.business.system.entity.Dict;
+import com.cloud.mvc.example.business.system.entity.DictExample;
+import com.cloud.mvc.example.business.system.service.DictService;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 

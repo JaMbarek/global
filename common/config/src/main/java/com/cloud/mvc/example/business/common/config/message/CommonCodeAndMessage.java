@@ -15,8 +15,9 @@ public enum CommonCodeAndMessage implements CodeAndMessage{
     USER_LOGIN_FAILED(10007),
 
     USER_ACCESS_DENY(10008),
-    USER_CANNOT_ACCESS(10009)
+    USER_CANNOT_ACCESS(10009),
 
+    NOT_LOGIN(10010),
     ;
 
     private Integer code;

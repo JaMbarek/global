@@ -1,6 +1,9 @@
 package com.cloud.mvc.example.business.domain.exceptions.user;
 
-public class LoginException extends RuntimeException{
+import com.cloud.mvc.example.business.domain.exceptions.IMessage;
+import com.cloud.mvc.example.business.domain.exceptions.IThrow;
+
+public class LoginException extends IThrow implements IMessage {
 
     private String message;
 
@@ -8,10 +11,6 @@ public class LoginException extends RuntimeException{
         LoginException e = new LoginException();
         e.message = message;
         return e;
-    }
-
-    public void doThrow(){
-        throw this;
     }
 
     @Override
@@ -36,5 +35,10 @@ public class LoginException extends RuntimeException{
 
     public LoginException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
+    }
+
+    @Override
+    public String getDescription() {
+        return "登录过程发生异常";
     }
 }

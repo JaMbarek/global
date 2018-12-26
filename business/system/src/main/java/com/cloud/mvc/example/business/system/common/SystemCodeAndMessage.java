@@ -1,4 +1,4 @@
-package com.cloud.mvc.example.business.system.general;
+package com.cloud.mvc.example.business.system.common;
 
 import com.cloud.mvc.example.business.common.config.message.CodeAndMessage;
 

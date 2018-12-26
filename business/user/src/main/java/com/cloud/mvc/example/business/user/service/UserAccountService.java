@@ -25,4 +25,12 @@ public class UserAccountService {
 
     }
 
+    public UserAccountDto findUserAccountByEmail(String email) {
+        UserAccountExample example = new UserAccountExample();
+        example.createCriteria().andPhoneEqualTo(email);
+
+        return mapper.selectByExample(example).stream().findFirst()
+                .map(t -> BeanMapper.map(t, UserAccountDto.class))
+                .orElse(null);
+    }
 }
