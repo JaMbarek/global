@@ -16,6 +16,7 @@
         <option value="$PROJECT_DIR$/business/system/pom.xml" />
         <option value="$PROJECT_DIR$/basic/zuul/pom.xml" />
         <option value="$PROJECT_DIR$/business/AuthServer/pom.xml" />
+        <option value="$PROJECT_DIR$/business/rest/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
