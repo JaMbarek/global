@@ -3,6 +3,7 @@ package com.cloud.mvc.example.business.common.config.security.service;
 import com.cloud.mvc.example.business.common.config.security.beans.UserAccountDetail;
 import com.cloud.mvc.example.business.domain.dto.user.UserAccountDto;
 import com.cloud.mvc.example.business.domain.enums.Role;
+import com.cloud.mvc.example.business.domain.resp.R;
 import com.cloud.mvc.example.common.service.user.IUserAccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,11 @@ public class UserDetailsServiceIml implements UserDetailsService  {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.debug("尝试获取用户信息，username={}", username);
-        UserAccountDto dto = service.findUserAccountByPhone(username);
+        R<UserAccountDto> r = service.findUserAccountByPhone(username);
+        r.getRuntimeException().ifPresent(t -> t.doThrow());
+
+        UserAccountDto dto = r.getData();
+
 
         Optional.ofNullable(dto).orElseThrow(() -> new UsernameNotFoundException("找不到用户信息"));
 
@@ -41,7 +46,11 @@ public class UserDetailsServiceIml implements UserDetailsService  {
         detail.setPassword(dto.getLoginPassword());
 
 
-        List<Role> roleDto = service.collectGrantedAuthorities(dto.getId());
+        R<List<Role>> roleDtoR = service.collectGrantedAuthorities(dto.getId());
+
+        roleDtoR.getRuntimeException().ifPresent(t -> t.doThrow());
+        List<Role> roleDto = roleDtoR.getData();
+
         List<GrantedAuthority> collect = roleDto.stream().map(t -> (GrantedAuthority) () -> t.getName()).collect(Collectors.toList());
         detail.setGrantedAuthorities(collect);
 

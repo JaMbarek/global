@@ -1,6 +1,7 @@
 package com.cloud.mvc.example.common.service.system.fallback;
 
 import com.cloud.mvc.example.business.domain.dto.system.DictDto;
+import com.cloud.mvc.example.business.domain.resp.R;
 import com.cloud.mvc.example.common.service.system.client.SystemDictServiceClient;
 import feign.hystrix.FallbackFactory;
 import org.slf4j.Logger;
@@ -14,7 +15,7 @@ public class DictFallbackFactory implements FallbackFactory<SystemDictServiceCli
 
         return new SystemDictServiceClient() {
             @Override
-            public DictDto findDictByKey(String key) {
+            public R<DictDto> findDictByKey(String key) {
                 logger.error("查询常量信息出现异常：", throwable);
                 throw new RuntimeException(throwable);
             }

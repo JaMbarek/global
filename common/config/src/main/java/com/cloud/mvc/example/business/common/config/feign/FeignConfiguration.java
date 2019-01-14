@@ -1,5 +1,6 @@
 package com.cloud.mvc.example.business.common.config.feign;
 
+import feign.Retryer;
 import feign.auth.BasicAuthRequestInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -18,7 +19,10 @@ public class FeignConfiguration {
         return new BasicAuthRequestInterceptor(properties.getUser().getName(), properties.getUser().getPassword());
     }
 
-
+    @Bean
+    public Retryer retryer(){
+        return Retryer.NEVER_RETRY;
+    }
 
 
 }

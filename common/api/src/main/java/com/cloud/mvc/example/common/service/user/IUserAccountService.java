@@ -3,6 +3,7 @@ package com.cloud.mvc.example.common.service.user;
 import com.cloud.mvc.example.business.domain.constants.UrlConstants;
 import com.cloud.mvc.example.business.domain.dto.user.UserAccountDto;
 import com.cloud.mvc.example.business.domain.enums.Role;
+import com.cloud.mvc.example.business.domain.resp.R;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,12 +16,12 @@ public interface IUserAccountService {
 
 
     @GetMapping("/findUserAccountByPhone")
-    UserAccountDto findUserAccountByPhone(@RequestParam("phone") String phone);
+    R<UserAccountDto> findUserAccountByPhone(@RequestParam("phone") String phone);
 
     @GetMapping("/findUserAccountByEmail")
-    UserAccountDto findUserAccountByEmail(@RequestParam("email") String email);
+    R<UserAccountDto> findUserAccountByEmail(@RequestParam("email") String email);
 
     @GetMapping("/collectGrantedAuthorities/{id}")
-    List<Role> collectGrantedAuthorities(@PathVariable("id") Long id);
+    R<List<Role>> collectGrantedAuthorities(@PathVariable("id") Long id);
 
 }
