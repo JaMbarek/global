@@ -1,0 +1,15 @@
+{
+  "name" : "person",
+  "id"  : 1,
+  "uri" : "mysql://root%2Froot@192.168.204.10:3306/1/mysqlbin-log",
+  "slowSourceQueryThreshold" : 2000,
+  "sources" :
+  [
+    {
+      "id" : 40,
+      "name" : "com.example.databus.client.entity.Person",
+      "uri": "or_test.person",
+      "partitionFunction" : "constant:1"
+    }
+  ]
+}

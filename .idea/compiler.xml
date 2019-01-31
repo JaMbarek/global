@@ -13,6 +13,7 @@
         <module name="auth-client" />
         <module name="authclient" />
         <module name="AuthServer" />
+        <module name="client" />
         <module name="config" />
         <module name="config (1) (com.cloud.mvc.example.basic)" />
         <module name="config (2) (com.cloud.mvc.example)" />
@@ -22,7 +23,7 @@
         <module name="message-client" />
         <module name="messageclient" />
         <module name="monitor" />
-        <module name="rest" />
+        <module name="relay" />
         <module name="system" />
         <module name="task" />
         <module name="transaction" />
