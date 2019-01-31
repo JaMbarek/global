@@ -1,0 +1,16 @@
+
+spring:
+  application:
+    name: rest
+  data:
+    rest:
+      basePath: /api
+  datasource:
+    url: jdbc:mysql://cloud.db.com:3306/rest?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+server:
+  port: 10009
+  address: localhost

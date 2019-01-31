@@ -22,6 +22,7 @@
         <module name="message-client" />
         <module name="messageclient" />
         <module name="monitor" />
+        <module name="rest" />
         <module name="system" />
         <module name="task" />
         <module name="transaction" />
