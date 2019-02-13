@@ -7,15 +7,12 @@ spring:
   profiles:
     active: dev
 
+
 logging:
   config: classpath:logback.groovy
-
 ---
 spring:
-  application:
-    name: system
   profiles: dev
-
 ---
 spring:
   application:

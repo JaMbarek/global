@@ -1,0 +1,15 @@
+
+server:
+  port: 10006
+  address: cloud.test.com
+spring:
+  application:
+    name: message
+  profiles:
+    active: dev
+logging:
+  config: classpath:logback.groovy
+
+---
+spring:
+  profiles: dev

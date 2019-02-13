@@ -20,10 +20,12 @@
         <module name="eureka" />
         <module name="gateway" />
         <module name="generator" />
+        <module name="message" />
         <module name="message-client" />
         <module name="messageclient" />
         <module name="monitor" />
         <module name="relay" />
+        <module name="rest" />
         <module name="system" />
         <module name="task" />
         <module name="transaction" />
@@ -35,6 +37,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="general" target="1.8" />
+      <module name="sample_main" target="1.8" />
+      <module name="sample_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

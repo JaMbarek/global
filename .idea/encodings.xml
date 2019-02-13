@@ -12,6 +12,7 @@
     <file url="file://$PROJECT_DIR$/basic/zuul" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/business" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/business/AuthServer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/business/message" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/business/rest" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/business/system" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/business/user" charset="UTF-8" />

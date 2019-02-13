@@ -20,7 +20,7 @@ public class ServerSendClientTask {
     @Autowired
     RefreshBean refreshBean;
 
-    @Value("${ccc.name}")
+//    @Value("${ccc.name}")
     private String name;
 
 //    @Scheduled(fixedDelay = ONE_SECOND)
