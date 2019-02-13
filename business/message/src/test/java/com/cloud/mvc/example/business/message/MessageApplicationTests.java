@@ -1,4 +1,4 @@
-package com.cloud.mvc.exmaple.business.message.message;
+package com.cloud.mvc.example.business.message;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

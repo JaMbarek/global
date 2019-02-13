@@ -4,7 +4,7 @@ import java.nio.charset.Charset
 
 
 def userHome = System.getProperty("user.home")
-def appName = "system"
+def appName = "message"
 
 appender("CONSOLE", ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
@@ -38,7 +38,7 @@ logger("org.apache.http", ERROR)
 logger("com.netflix", ERROR)
 logger("org.netflix", ERROR)
 logger("org.springframework.jmx", ERROR)
-logger("org.hibernate.validator", ERROR)
+logger("org.hibernate", ERROR)
 logger("io.netty", ERROR)
 logger("org.synchronoss.cloud", ERROR)
 logger("org.springframework.cloud", ERROR)
@@ -56,5 +56,6 @@ logger("java.sql.PreparedStatement", DEBUG)
 logger("io.swagger.models.parameters.AbstractSerializableParameter", ERROR)//在访问swagger-ui时会报错，据说是官方bug，这里先调整日志级别
 logger("com.ctrip.framework.apollo.internals", ERROR)
 logger("org.springframework.security", ERROR)
+logger("io.undertow.request.security", ERROR)
 
 

@@ -13,3 +13,5 @@ logging:
 ---
 spring:
   profiles: dev
+  jpa:
+    show-sql: true
