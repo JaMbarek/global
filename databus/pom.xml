@@ -19,28 +19,28 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>com.linkedin.databus</groupId>
-            <artifactId>databus-core-schemas</artifactId>
-            <version>2.0.0.fk.001</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.linkedin.databus</groupId>-->
+            <!--<artifactId>databus-core-schemas</artifactId>-->
+            <!--<version>2.0.0.fk.001</version>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>com.linkedin.databus</groupId>
-            <artifactId>databus-core-impl</artifactId>
-            <version>2.0.0.fk.001</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.linkedin.databus</groupId>-->
+            <!--<artifactId>databus-core-impl</artifactId>-->
+            <!--<version>2.0.0.fk.001</version>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>com.linkedin.databus</groupId>
-            <artifactId>databus-util-cmdline-impl</artifactId>
-            <version>2.0.0.fk.001</version>
-        </dependency>
-        <dependency>
-            <groupId>com.linkedin.databus</groupId>
-            <artifactId>databus-core-container</artifactId>
-            <version>2.0.0.fk.001</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.linkedin.databus</groupId>-->
+            <!--<artifactId>databus-util-cmdline-impl</artifactId>-->
+            <!--<version>2.0.0.fk.001</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.linkedin.databus</groupId>-->
+            <!--<artifactId>databus-core-container</artifactId>-->
+            <!--<version>2.0.0.fk.001</version>-->
+        <!--</dependency>-->
 
         <!--<dependency>-->
             <!--<groupId>com.linkedin.databus</groupId>-->
@@ -116,27 +116,27 @@
             <version>1.8.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.oracle.ojdbc6</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google</groupId>
-            <artifactId>open-replicator</artifactId>
-            <version>1.0.7</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.oracle.ojdbc6</groupId>-->
+            <!--<artifactId>ojdbc6</artifactId>-->
+            <!--<version>11.2.0.2.0</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.google</groupId>-->
+            <!--<artifactId>open-replicator</artifactId>-->
+            <!--<version>1.0.7</version>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>net.sf.josql</groupId>
-            <artifactId>gentlyweb-utils</artifactId>
-            <version>1.5</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.josql</groupId>
-            <artifactId>josql</artifactId>
-            <version>1.0.5</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>net.sf.josql</groupId>-->
+            <!--<artifactId>gentlyweb-utils</artifactId>-->
+            <!--<version>1.5</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>net.sf.josql</groupId>-->
+            <!--<artifactId>josql</artifactId>-->
+            <!--<version>1.0.5</version>-->
+        <!--</dependency>-->
 
 
     </dependencies>

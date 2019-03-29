@@ -79,5 +79,14 @@ public class ReactiveRedisConfiguration {
         return genericObjectPoolConfig;
     }
 
+    public static void main(String[] args) {
+
+
+
+
+
+
+
+    }
 
 }

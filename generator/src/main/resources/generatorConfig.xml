@@ -28,13 +28,12 @@
         <plugin type="plugins.UpsertPlugin" />
 
 
-        <!--<plugin type="plugins.DtoPlugin" >-->
-            <!--<property name="packageName" value="${dtoPackageName}" />-->
-            <!--<property name="dto.template.path" value="E:\github\global\generator\src\main\resources\ftl" />-->
-            <!--<property name="file.name" value="dto.ftl" />-->
-            <!--<property name="dto.out.path" value="${dtoOutPath}" />-->
-        <!--</plugin>-->
-<!---->
+        <plugin type="plugins.DtoPlugin" >
+            <property name="packageName" value="${dtoPackageName}" />
+            <property name="file.name" value="dto.ftl" />
+            <property name="dto.out.path" value="${dtoOutPath}" />
+        </plugin>
+
         <!--<plugin type="plugins.VoPlugin" >-->
             <!--<property name="packageName" value="${voPackageName}" />-->
             <!--<property name="dto.template.path" value="E:\github\global\generator\src\main\resources\ftl" />-->

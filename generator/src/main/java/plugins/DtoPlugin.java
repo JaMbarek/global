@@ -13,8 +13,10 @@ import org.slf4j.LoggerFactory;
 import plugins.utils.TableEntity;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.net.URL;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -67,9 +69,28 @@ public class DtoPlugin extends PluginAdapter {
         entity.setImports(imports);
 
         Configuration configuration = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
-        FileTemplateLoader loader = new FileTemplateLoader(new File(getProperties().getProperty("dto.template.path")));
+//        URL resource = this.getClass().getProtectionDomain().getCodeSource().getLocation();
+        URL resource = this.getClass().getClassLoader().getResource("/ftl/dto.ftl");
+        String file = resource.getPath() ;
+        System.out.println("file:" + resource.getFile());
+        System.out.println("file:" + resource.getPath());
+        FileTemplateLoader loader = new FileTemplateLoader(new File(file));
         configuration.setTemplateLoader(loader);
         Template template = configuration.getTemplate(getProperties().getProperty("file.name"), "UTF-8");
         template.process(entity, new OutputStreamWriter(new FileOutputStream(getProperties().getProperty("dto.out.path") + "\\" + className + ".java")));
     }
+
+    public static void main(String[] args) {
+        URL resource = DtoPlugin.class.getProtectionDomain().getCodeSource().getLocation();
+        String file = resource.getFile();
+        System.out.println(file);
+
+
+        File f = new File(file + "/ftl/dto.ftl");
+        System.out.println(f.exists());
+
+    }
+
+
+
 }

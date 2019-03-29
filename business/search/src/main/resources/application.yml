@@ -1,0 +1,8 @@
+server:
+  port: 9004
+  address: cloud.test.com
+spring:
+  application:
+    name: search
+  profiles:
+    active: dev
