@@ -26,6 +26,7 @@
         <module name="monitor" />
         <module name="relay" />
         <module name="rest" />
+        <module name="search" />
         <module name="system" />
         <module name="task" />
         <module name="transaction" />
@@ -40,5 +41,28 @@
       <module name="sample_main" target="1.8" />
       <module name="sample_test" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin-server" options="-parameters" />
+      <module name="auth" options="-parameters" />
+      <module name="auth-client" options="-parameters" />
+      <module name="client" options="-parameters" />
+      <module name="config (1) (com.cloud.mvc.example.basic)" options="-parameters" />
+      <module name="config (2) (com.cloud.mvc.example)" options="-parameters" />
+      <module name="eureka" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="message" options="-parameters" />
+      <module name="message-client" options="-parameters" />
+      <module name="monitor" options="-parameters" />
+      <module name="relay" options="-parameters" />
+      <module name="rest" options="-parameters" />
+      <module name="search" options="-parameters" />
+      <module name="system" options="-parameters" />
+      <module name="task" options="-parameters" />
+      <module name="transaction" options="-parameters" />
+      <module name="user" options="-parameters" />
+      <module name="zuul" options="-parameters" />
+    </option>
   </component>
 </project>
