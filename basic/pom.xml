@@ -26,6 +26,7 @@
 
     <properties>
         <spring-boot-admin.version>2.1.0</spring-boot-admin.version>
+        <docker.image.prefix>springboot</docker.image.prefix>
     </properties>
 
 
@@ -43,5 +44,27 @@
 
     </dependencies>
 
+    <build>
+        <plugins>
+            <!-- Docker maven plugin -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <dockerHost>http://192.168.111.110:2375</dockerHost>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -12,7 +12,6 @@ public class DataCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-
         String name = context.getEnvironment().getProperty("spring.application.name");
         LOG.info("当前应用名称：{}", name);
         return !name.equals("message");

@@ -1,0 +1,29 @@
+server:
+  address: cloud.test.com
+  port: 10007
+
+spring:
+  application:
+    name: sharding
+  profiles:
+    active: dev
+
+  jpa:
+    show-sql: true
+
+sharding:
+  cut:
+    driver-class-name:
+    url: jdbc:mysql://cloud.db.com:3306/system?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: root
+  cut2:
+    driver-class-name:
+      url: jdbc:mysql://cloud.db.com:3306/system?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
+      username: root
+      password: root
+  cut3:
+    driver-class-name:
+      url: jdbc:mysql://cloud.db.com:3306/system?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
+      username: root
+      password: root

@@ -5,9 +5,11 @@ import com.cloud.mvc.example.business.user.dao.UserAccountMapper;
 import com.cloud.mvc.example.business.user.entity.UserAccountExample;
 import com.cloud.mvc.example.utils.mapper.BeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
 @Service
+@RefreshScope
 public class UserAccountService {
 
     @Autowired
