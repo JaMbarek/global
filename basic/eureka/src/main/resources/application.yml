@@ -1,6 +1,5 @@
 server:
   port: 10000
-  address: cloud.test.com
 spring:
   application:
     name: EurekaServer
@@ -14,7 +13,7 @@ eureka:
   client:
     register-with-eureka: false
     service-url:
-      defaultZone: http://${server.address}:${server.port}/eureka/
+      defaultZone: http://${server.address:localhost}:${server.port}/eureka/
     fetch-registry: false
 #    registry-fetch-interval-seconds: 30
   instance:

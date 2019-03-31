@@ -26,7 +26,7 @@
 
     <properties>
         <spring-boot-admin.version>2.1.0</spring-boot-admin.version>
-        <docker.image.prefix>springboot</docker.image.prefix>
+        <docker.image.prefix>basic</docker.image.prefix>
     </properties>
 
 
@@ -54,7 +54,7 @@
                 <configuration>
                     <dockerHost>http://192.168.111.110:2375</dockerHost>
                     <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <dockerDirectory>./</dockerDirectory>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
