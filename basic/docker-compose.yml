@@ -1,0 +1,41 @@
+# 配置文件的版本
+version: '2'
+# 创建的服务,这里我创建了3个服务,两个jar项目作为演示,一个mysql作为服务器
+services:
+  dmc_api:
+    #    容器的名称
+    container_name: dmc_apim
+    #    容器的端口信息,这里的SpringBoot项目的端口是9092,可以在宿主机通过8082访问
+    ports:
+    - "8082:9092"
+    #      依赖的docker images镜像名称,当然也有版本这里是简写 dmc_api:latest
+    image: dmc_apim
+    #    创建自服务的依赖项,此服务依赖属于mysql,在我们创建的三个服务中的最后一个
+    depends_on:
+    - dmc_dev_mysql
+
+  dmc_user:
+    container_name: dmc_user
+    ports:
+    - "8081:9091"
+    image: dmc_user
+    depends_on:
+    - dmc_dev_mysql
+
+  dmc_dev_mysql:
+    #  这个属性非常重要,在SpringBoot的服务中,可以通过这个名称访问,如果名称冲突,docker_compose会自动的添加后缀导致SpringBoot项目找不到数据库连接,
+    #  从而启动失败,因此需要配置容器的名称
+    container_name: dmc_dev_mysql
+    #    挂载目录,其中 /docker-entrypoint-initdb.d/ 是比较重要的,他可以进行mysql的初始化,在我们的mysql服务的时候启动初始化脚本
+    #    因此需要在挂载的目录下创建init.sql脚本文件,用于初始化
+    volumes:
+    - ./data/:/var/lib/mysql/
+    - ./mysql/init/:/docker-entrypoint-initdb.d/
+    #      配置映射端口,这里mysql的端口默认是3306,我们将其映射到宿主机的9936端口
+    ports:
+    - "9936:3306"
+    #      依赖的镜像
+    image: hub.c.163.com/library/mysql
+    #    镜像运行需要的参数,可以根据自己的需要来配置,这个请参考镜像的说明文件
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yse
