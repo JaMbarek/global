@@ -30,6 +30,5 @@ for /f "tokens=1-5" %%a in ('netstat -ano ^| findstr "10005"') do (
     )
     echo !pid!
     taskkill /f /pid !pid!
-    goto :end
 )
 pause
