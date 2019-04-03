@@ -91,6 +91,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/open").permitAll()
                 .antMatchers("*.js").permitAll()
+                .antMatchers("*.stream").permitAll()
+                .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/user/**").access("hasAnyRole('user', 'admin')")
                 .anyRequest().permitAll()
         ;

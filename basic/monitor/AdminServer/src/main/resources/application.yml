@@ -20,12 +20,13 @@ spring:
             - "*:UP" #从任何状态到up状态都不要发邮件通知
       routes:
         endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+      turbine:
+        location: AdminServer
 
 turbine:
-  app-config: Gateway #收集监控信息的服务名
+  app-config: user #收集监控信息的服务名
   combine-host-port: true
   cluster-name-expression: new String('default') #集群名称
-
 
 eureka:
   instance:

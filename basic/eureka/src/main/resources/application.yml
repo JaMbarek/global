@@ -22,8 +22,8 @@ eureka:
     hostname: 127.0.0.1
     lease-expiration-duration-in-seconds: 90
     lease-renewal-interval-in-seconds: 30
-    status-page-url-path: /actuator/info
-    health-check-url-path: /actuator/health
+#    status-page-url-path: /actuator/info
+#    health-check-url-path: /actuator/health
   server:
     enable-self-preservation: true
     eviction-interval-timer-in-ms: 60000

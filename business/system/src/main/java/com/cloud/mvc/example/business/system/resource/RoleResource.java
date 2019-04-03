@@ -32,11 +32,11 @@ public class RoleResource implements IRoleService {
         logger.debug("开始查询角色信息：{}", name);
 
         try {
-            TimeUnit.SECONDS.sleep(50);
+            TimeUnit.SECONDS.sleep(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return R.from(Try.of(() -> service.findRoleByName(name)));
+        return R.from(Try.of(() -> new RoleDto("abc")));
     }
 
     @Override
