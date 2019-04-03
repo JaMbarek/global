@@ -9,10 +9,42 @@ spring:
     user:
       name: admin
       password: admin123
+  boot:
+    admin:
+      notify:
+        mail:
+          to: xxx@qq.com
+          from: xxx@163.com
+          #          ignore-changes: UNKNOWN:UP
+          ignore-changes:
+            - "*:UP" #从任何状态到up状态都不要发邮件通知
+      routes:
+        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+
+turbine:
+  app-config: Gateway #收集监控信息的服务名
+  combine-host-port: true
+  cluster-name-expression: new String('default') #集群名称
+
 
 eureka:
   instance:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://admin:admin123@localhost:10000/eureka/
+      defaultZone: http://admin:admin123@eureka:10000/eureka/
+
+management:
+  health:
+    redis:
+      enabled: false #不监控redis，监控状态下总是显示down的状态
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露所有节点
+    health:
+      sensitive: false #关闭过滤敏感信息
+  endpoint:
+    health:
+      show-details: ALWAYS  #显示详细信息
+

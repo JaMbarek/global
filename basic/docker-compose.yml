@@ -4,21 +4,18 @@ services:
   eureka:
     container_name: eureka
     ports:
-    - "10000:10000"
+      - "10000:10000"
     image: basic/eureka
-    links:
-      - gateway
-      - config
+
   gateway:
     container_name: gateway
     ports:
-    - "10005:10005"
+      - "10005:10005"
     image: basic/gateway
     depends_on:
-    - eureka
+      - eureka
     links:
       - eureka
-      - config
 
   config:
     container_name: config
@@ -27,7 +24,6 @@ services:
     #      依赖的镜像
     image: basic/config
     depends_on:
-    - eureka
+      - eureka
     links:
       - eureka
-      - gateway
