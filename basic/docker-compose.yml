@@ -14,10 +14,8 @@ services:
     image: basic/gateway
     depends_on:
       - eureka
-      - config
     links:
       - eureka
-      - config
 
   config:
     container_name: config
@@ -34,22 +32,18 @@ services:
     ports:
       - "10002:10002"
     #      依赖的镜像
-    image: basic/admin
+    image: basic/admin-server
     depends_on:
       - eureka
-      - config
     links:
       - eureka
-      - config
   zipkin:
     container_name: zipkin
     ports:
       - "10004:10004"
     #      依赖的镜像
-    image: basic/zipkin
+    image: basic/zipkin-server
     depends_on:
       - eureka
-      - config
     links:
       - eureka
-      - config
