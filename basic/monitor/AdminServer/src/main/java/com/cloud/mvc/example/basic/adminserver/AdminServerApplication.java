@@ -11,8 +11,8 @@ import org.springframework.cloud.netflix.turbine.EnableTurbine;
 
 @SpringCloudApplication
 @EnableAdminServer
-@EnableTurbine
-@EnableHystrixDashboard
+//@EnableTurbine
+//@EnableHystrixDashboard
 public class AdminServerApplication {
 
     public static void main(String[] args) {

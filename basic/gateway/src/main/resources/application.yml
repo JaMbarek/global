@@ -13,11 +13,6 @@ eureka:
 spring:
   application:
     name: Gateway
-  redis:
-    host: 192.168.28.129
-    password: admin123
-    port: 6379
-    timeout: 0
 
   cloud:
     gateway:

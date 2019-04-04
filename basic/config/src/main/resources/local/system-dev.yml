@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://cloud.db.com:3306/system?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
+    username: root
+  redis:
+    database: 0
+    host: cloud.db.com
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1
+        min-idle: 0
+    password: admin123
+    port: 6379
+    timeout: 3000
+  rabbitmq:
+    host: cloud.db.com
+    port: 5672
+    username: guest
+    password: guest

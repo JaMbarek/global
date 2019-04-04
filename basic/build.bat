@@ -9,4 +9,10 @@ cd ..
 cd gateway
 call mvn clean package -DskipTests docker:build
 cd ..
+cd monitor/AdminServer
+call mvn clean package -DskipTests docker:build
+cd ..
+cd monitor/ZipkinServer
+call mvn clean package -DskipTests docker:build
+cd ../..
 pause
